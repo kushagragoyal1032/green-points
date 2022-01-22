@@ -1,0 +1,58 @@
+#success-banner1
+{
+    background-image: linear-gradient(to right, #5de035,#178250); 
+    padding: 0 !important;
+    color: aliceblue;
+   /* margin-bottom: 51px; */
+} 
+
+
+
+.right_side img{
+    width: 500px;
+}
+.right_side
+{
+    height: 100vh;
+}
+
+.left_side
+{
+    height: 100vh;
+}
+
+.splitimage
+{
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.mybg
+{
+    background-image: url('images/mybg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+#myTable1 th
+{
+    text-align: center;
+}
+
+#myTable2 th
+{
+    text-align: center;
+}
+
+#myTable3 th
+{
+    text-align: center;
+}
+
+#myTableAll th
+{
+    text-align: center;
+}

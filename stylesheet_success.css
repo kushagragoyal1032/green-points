@@ -1,0 +1,120 @@
+#success-banner1
+{
+    background-image: linear-gradient(to right, #5de035,#178250); 
+    padding: 0 !important;
+    color: aliceblue;
+   /* margin-bottom: 51px; */
+} 
+
+.mybg
+{
+    background-image: url('images/background.png');
+    background-repeat: no-repeat;
+    background-size: 100%,20%;
+    background-attachment: fixed;
+}
+
+.body-title1
+{
+    font-size: 40px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+/* 
+.thanks_col
+{
+    border-right: 5px solid white;
+    border-width: 5px; 
+    border-style: solid;
+} 
+*/
+
+.success-card
+{
+    margin-top: 5px;
+    margin-bottom: 100px;
+
+    /* max-height: 800px; */
+    /* min-height: 700px; */
+
+    /* max-width: 700px; */
+    /* align-items: center; */
+}
+
+.full
+{
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.success_container
+{
+    border: 2px solid rgb(16, 207, 16);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+    background: linear-gradient(to right, #5de035,#178250); 
+    max-width: 800px;
+    margin: auto;
+
+    /* text-align: center; */
+}
+
+.title_success
+{
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+.tick_img
+{
+    width: 200px;
+    /* padding: 30px; */
+}
+
+.texts
+{
+    padding: 10px;
+    font-size: 18px;
+    padding-bottom: 0px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+.texts_para
+{
+    text-align: center;
+    color: rgb(212, 212, 212);
+    font-weight: 200;
+    padding-top: 0px;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.success_container button
+{
+    border-radius: 20px;
+    color: rgb(30, 181, 219);
+    margin: 10px;
+    height: 50px;
+    width: 200px;
+    font-size: 15px;
+    font-weight: 700;
+    /* margin-left: 220px; */
+    /* justify-content: center; */
+}
+
+/* .bann hr */
+
+    /* margin: 20px; 
+    margin-left: 50px; 
+    margin-right: 50px;
+     color: rgb(255, 255, 255);
+      height: 5px; */
