@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
+    
+    <?php
+    session_start();
+    include 'partials/_db_connect.php';
+    $partnerid = $_SESSION['partnerid'];
 
-?>
+if(isset($_GET['P_accept']))
+{
+    $task_no = $_GET['P_accept'];
+    $quer= "UPDATE `greentask` SET `Task_status` = 'Accepted', `Task_partner_id` = $partnerid WHERE `greentask`.`Task_sno` = $task_no";
+    // $quer= "UPDATE `greentask` SET `Task_partner_id` = $partnerid and `Task_status` = 'Accepted'  WHERE `Task_sno` = $task_no";
+    $result = mysqli_query($con,$quer);
+}
+
+?>  
 
 <head>
     <meta charset="UTF-8">
@@ -34,17 +46,16 @@
 <?php 
     
     
-    session_start();
     
-    if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
+    
+    if(isset($_SESSION['partnerisloggedin']) && $_SESSION['partnerisloggedin']==true)
     {
-        $userid = $_SESSION['userid'];
-        include 'partials/_db_connect.php';
+        // you are looged in
     }
     
     else {
         $message = "Login First, to See your Activity";
-        header("location:/green/index.php?loggedinsuccess=false&login_errormessage='$message'");
+        header("location:/green/partner.php?Ploggedinsuccess=false&Plogin_errormessage='$message'");
         ob_end_flush();
     }
     ?>
@@ -52,15 +63,15 @@
     <div>
         <h1
             style="font-weight:700; font-size: xxx-large; text-align: center; margin-top: 15px; font-family: Courier, monospace;">
-            Previous History</h1>
+            PArtner Previous History</h1>
     </div>
 
     <div class="mt-10 ml-32 mr-32 p-10 mb-32"
         style="border-radius: 10px ; text-align: center; background-image: linear-gradient(to right, #5de035,#26ddb9); min-height: 700px; ">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#AllTasks">All Tasks</a></li>
-            <li><a data-toggle="tab" href="#Pending">Pending Tasks</a></li>
+            <!-- <li class="active"><a data-toggle="tab" href="#AllTasks">All Tasks</a></li> -->
+            <li class="active"><a data-toggle="tab" href="#Pending">Pending Tasks</a></li>
             <li><a data-toggle="tab" href="#Accepted">Accepted Tasks</a></li>
             <li><a data-toggle="tab" href="#Completed">Completed Tasks</a></li>
         </ul>
@@ -68,53 +79,12 @@
         <div class="tab-content">
 
 
-            <div id="AllTasks" class="tab-pane fade in active">
-                <h3 class="mb-10 mt-4 text-4xl text-white">All TASKS</h3>
-                <table class="table table-striped" id=myTableAll>
-                    <thead>
-                        <tr>
-                            <th scope="col">S.No</th>
-                            <th scope="col">State</th>
-                            <th scope="col">Area</th>
-                            <th scope="col">Pincode</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-
-
-                    <tbody>
-
-                      
-
-                        <?php
-                        
-                            $sno=0;
-                            $quer = "SELECT * FROM `greentask` where `Task_user_id`= $userid";
-                            $result = mysqli_query($con,$quer);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $sno=$sno+1;
-                                $actual_Task_id = $row['Task_sno'];
-                                echo '  <tr>
-                                <th scope="row">'.$sno.'</th>
-                                <td>'.$row['Task_state'].'</td>
-                                <td>'.$row['Task_address'].'</td>
-                                <td>'.$row['Task_pincode'].'</td>
-                                <td>
-                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
-
-                                </td>
-                            </tr>';
-                            }
-                        ?>
-
-                    </tbody>
-                </table>
-            </div>
+            
 
             <!-- =========================================== -->
 
 
-            <div id="Pending" class="tab-pane fade">
+            <div id="Pending" class="tab-pane fade in active">
                 <h3 class="mb-10 mt-4 text-4xl text-white">PENDING TASKS</h3>
                 <table class="table table-striped" id=myTable1>
                     <thead>
@@ -130,32 +100,29 @@
 
                     <?php
                         $sno=0;
-                        $quer = "SELECT * FROM `greentask` where `Task_user_id`= $userid and `Task_status`= 'Pending'";
+                        $quer = "SELECT * FROM `greentask` where `Task_status`= 'Pending'";
                         $result = mysqli_query($con,$quer);
                         while ($row = mysqli_fetch_assoc($result)) {
                             $sno=$sno+1;
+                            $user_id =  $row['Task_user_id'];
+                            $actual_Task_id = $row['Task_sno'];
                             echo '  <tr>
                             <th scope="row">'.$sno.'</th>
                             <td>'.$row['Task_state'].'</td>
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
                             <td>
-                                '.$row['Task_status'].'
+                                
+                            <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn btn-danger">'.$row['Task_status'].'</button></a>
+                           
+                            <button type="button" class="btn btn-danger acceptbtn" id='.$actual_Task_id.'>Accept Task</button>
                             </td>
                         </tr>';
                         }
                     ?>
 
 
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>'hello</td>
-                            <td>'how r u</td>
-                            <td>328022</td>
-                            <td>
-                                <button type="button" class="btn btn-primary editbtn mx-2 text-black">Edit</button>
-                            </td>
-                        </tr> -->
+                       
                     </tbody>
                 </table>
             </div>
@@ -227,7 +194,7 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                            
                     <?php
                             $sno=0;
                             $quer = "SELECT * FROM `greentask` where `Task_user_id`= $userid and `Task_status`= 'Accepted'";
@@ -280,10 +247,29 @@
             $('#myTable1').DataTable();
             $('#myTable2').DataTable();
             $('#myTable3').DataTable();
-            $('#myTableAll').DataTable();
+            // $('#myTableAll').DataTable();
 
 
         });
+    </script>
+
+    <script>
+        accept = document.getElementsByClassName('acceptbtn');
+        Array.from(accept).forEach((element)=>{
+            element.addEventListener("click",(e)=>{
+                taskid = e.target.id;
+                console.log(taskid);
+                // hiddenid.value = taskid;
+                if (confirm("Are You Sure to want to Accept this Task")) 
+                {
+                    window.location = `partner_previous_history.php?P_accept=${taskid}`;  
+                }
+                else
+                {
+                    console.log("NO");
+                }
+            })
+        })
     </script>
  
 </body>

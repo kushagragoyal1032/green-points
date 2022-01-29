@@ -53,7 +53,7 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat
                         corrupti modi ratione aliquam quae vero fuga atque at laudantium nemo? Excepturi non quisquam
                         praesentium aperiam corrupti laudantium quos totam perferendis.</p>
-                   <a href="#"> <button type="button" class="btn btn-light green-btn">Take My Case</button></a>
+                        <a href="partner_previous_history.php"> <button type="button" class="btn btn-light green-btn">Take My Case</button></a>
                 </div>
                 <!-- <div class="col-md-1 v1"> -->
                 <div class="col-md-6 image-tree text-center d-none d-sm-block">

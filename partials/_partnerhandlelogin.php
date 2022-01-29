@@ -19,6 +19,7 @@ if($num == 1)
 
       session_start();
       $_SESSION['partnerisloggedin'] = true;
+      $_SESSION['partnerid'] = $row["Partner_id"];  // this used to save id of logged in user
     //   $_SESSION['sno'] = $row["sno"];  // this used to save id of logged in user
     //   $_SESSION['username'] = $row["user_name"];
       header("location:/green/partner.php?loginsuccess=true");
