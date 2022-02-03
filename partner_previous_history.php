@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
                 Partner Previous History</h1>
         </div>
     </div>
-    <div class="mt-10 ml-32 mr-32 p-10 mb-32"
+    <div class="ml-sm-1 mr-sm-1  mt-10 ml-32 mr-32 p-10 mb-32 "
         style="border-radius: 10px ; text-align: center; background-image: linear-gradient(to right, #5de035,#26ddb9); min-height: 700px; ">
 
         <ul class="nav nav-tabs">
@@ -117,10 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
 
 
         <div class="tab-content">
-
-
-
-
             <!-- ==================PENDING TASKS========================= -->
 
 
