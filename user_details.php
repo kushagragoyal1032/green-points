@@ -10,17 +10,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="user_details.css">
+    <link rel="stylesheet" href="user_details.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
+
     <title>History</title>
 </head>
 
 <body class="mybodystyle">
 
-<?php include 'partials/_headerClient.php' ?>
+    <?php include 'partials/_headerClient.php' ?>
+    <a href="user_previous_history.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
 
-
-<?php 
-    
+    <?php 
     
     if(!isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']!=true)
     {
@@ -65,6 +66,12 @@
         {
            $coordinator_name =  $row['Partner_name'];
         }
+
+        // for fetch photos fro databse
+        $quer3 = "SELECT `Task_images` FROM `greentask` where `Task_sno`= $task_id ";
+        $task_result3 = mysqli_query($con,$quer3);
+
+
     }
 
 
@@ -138,6 +145,26 @@
                                     <td class=""><a href="'.$location_link.'" target="_blank" class="">Click Here</a></td>
                                     </th>
                                 </tr>
+                                <tr>
+                                <th width="30%">Images</th>
+                                <td width="2%">:</td>
+
+                                <td> <p id="heading">Click here</p>    
+                                        <div id="myModal" class="modal">
+
+                                        <!-- The Close Button -->
+                                        <span class="close">&times;</span>
+                                    
+                                        <!-- Modal Content (The Image) -->
+                                        <img class="modal-content" id="img01" alt="Image is not available">
+                                    
+                                        </div>
+                                    </div>'; ?>
+
+    <?php
+                            echo '</td>
+                                </th>
+                            </tr>
                             </table>
                         </div>
                     </div>
@@ -157,7 +184,45 @@
         </div>
     </div>';
     ?>
-    
+
+    <div style="display :none">
+        <?php if(mysqli_num_rows($task_result3) > 0)
+    { 
+        while($row = mysqli_fetch_assoc($task_result3))
+        { 
+            ?>
+        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['Task_images']); ?>"
+            id="mainImage" />
+        <?php  } 
+    }
+
+    else 
+    {
+        echo ' <p class="status error">Image(s) not Provided</p>';
+    }?>
+    </div>
+
+
+    <script>
+    var mainImage = document.getElementById("mainImage");
+    var modal = document.getElementById("myModal");
+    var heading = document.getElementById("heading");
+    var modalImg = document.getElementById("img01");
+
+    heading.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = mainImage.src;
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    </script>
+
+
 </body>
 
 </html>

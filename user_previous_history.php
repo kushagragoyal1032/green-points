@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>"> -->
+
+
 
     <title>History</title>
 
@@ -23,11 +25,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-
-
 </head>
-
 
 <body class="mybg">
 
@@ -49,10 +47,15 @@
     }
     ?>
 
-    <div>
-        <h1
-            style="font-weight:700; font-size: xxx-large; text-align: center; margin-top: 15px; font-family: Courier, monospace;">
-            Previous History</h1>
+<div class="row">
+        <div class="col-md-1" style="align-left">
+            <a href="index.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
+        </div>
+        <div class="col-md-11">
+            <h1
+                style="font-weight:700; font-size: xxx-large; text-align: center; margin-top: 15px; font-family: Courier, monospace;">
+                Your Activity</h1>
+        </div>
     </div>
 
     <div class="mt-10 ml-32 mr-32 p-10 mb-32"
@@ -106,13 +109,11 @@
                             </tr>';
                             }
                         ?>
-
                     </tbody>
                 </table>
             </div>
 
             <!-- =========================================== -->
-
 
             <div id="Pending" class="tab-pane fade">
                 <h3 class="mb-10 mt-4 text-4xl text-white">PENDING TASKS</h3>
@@ -134,28 +135,18 @@
                         $result = mysqli_query($con,$quer);
                         while ($row = mysqli_fetch_assoc($result)) {
                             $sno=$sno+1;
+                            $actual_Task_id = $row['Task_sno'];
                             echo '  <tr>
                             <th scope="row">'.$sno.'</th>
                             <td>'.$row['Task_state'].'</td>
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
                             <td>
-                                '.$row['Task_status'].'
+                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
                             </td>
                         </tr>';
                         }
                     ?>
-
-
-                        <!-- <tr>
-                            <th scope="row">1</th>
-                            <td>'hello</td>
-                            <td>'how r u</td>
-                            <td>328022</td>
-                            <td>
-                                <button type="button" class="btn btn-primary editbtn mx-2 text-black">Edit</button>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -183,13 +174,14 @@
                             $result = mysqli_query($con,$quer);
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $sno=$sno+1;
+                                $actual_Task_id = $row['Task_sno'];
                                 echo '  <tr>
                                 <th scope="row">'.$sno.'</th>
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.substr($row['Task_address'],0,101).'</td>
                                 <td>'.$row['Task_pincode'].'</td>
                                 <td>
-                                    '.$row['Task_status'].'
+                                    <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
                                 </td>
                             </tr>';
                             }

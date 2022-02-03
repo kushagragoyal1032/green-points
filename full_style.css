@@ -6,6 +6,53 @@
    /* margin-bottom: 51px; */
 } 
 
+.mainbtn
+{
+    border-radius: 14px !important;
+    color: rgb(255, 255, 255) !important;
+   
+    background-color: #19e4eb !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.mainbtn:hover
+{
+    /* background-color: rgb(86, 205, 252) !important; */
+    /* opacity: 0.6 !important; */
+    color: #000 !important;
+    background-color: #33f3fa !important;
+
+    -webkit-transition: color 1s;
+    -moz-transition:    color 1s;
+    -ms-transition:     color 1s;
+    -o-transition:      color 1s;
+    transition:         color 1s;
+}
+
+.secbtn
+{
+    border-radius: 14px !important;
+    color: rgb(255, 255, 255) !important;
+   
+    background-color: #48e908 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+}
+
+.secbtn:hover
+{
+    /* background-color: rgb(86, 205, 252) !important; */
+    /* opacity: 0.6 !important; */
+    color: #000 !important;
+    background-color: #33ff0a !important;
+
+    -webkit-transition: color 1s;
+    -moz-transition:    color 1s;
+    -ms-transition:     color 1s;
+    -o-transition:      color 1s;
+    transition:         color 1s;
+}
 
 
 .right_side img{
@@ -55,4 +102,30 @@
 #myTableAll th
 {
     text-align: center;
+}
+
+
+
+
+
+/* back button  */
+.square_btn {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    border-radius: 0 15px 15px 0;
+    transition: .4s;
+  }
+
+.square_btn:hover {
+    background: #0d9201;
+    color: #ffffff;
+    transform: translateX(-10px);
+
 }

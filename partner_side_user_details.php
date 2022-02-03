@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="user_details.css">
     <title>History</title>
 </head>
@@ -17,6 +18,7 @@
 <body class="mybodystyle">
 
 <?php include 'partials/_headerPartner.php' ?>
+<a href="partner_previous_history.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
 
 
 <?php 
