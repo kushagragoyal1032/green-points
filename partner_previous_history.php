@@ -1,5 +1,12 @@
+<?php
+ini_set('mysql.connect_timeout',300);
+ini_set('default_socket_timeout',300);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 
 <?php
@@ -13,17 +20,12 @@ if(isset($_GET['P_accept']))
     $quer= "UPDATE `greentask` SET `Task_status` = 'Accepted', `Task_partner_id` = $partnerid WHERE `greentask`.`Task_sno` = $task_no";
     $result = mysqli_query($con,$quer);
 }
+
 ?>
 
-<?php
-//completing the task and update desc and status in DB
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing') {
-    $hiddentaskid = $_POST["Task_id"];
-    $partner_desc = $_POST["PartnerDesc"];
-    $sql = "UPDATE `greentask` SET `Task_status` = 'Completed', `Task_partner_desc` = '$partner_desc' WHERE `greentask`.`Task_sno` = '$hiddentaskid'";
-    $result = mysqli_query($con,$sql);
-}
-?>
+
+<!-- <?php include 'partials/_markTaskHandle.php'; ?> -->
+
 
 <head>
     <meta charset="UTF-8">
@@ -61,38 +63,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
     ?>
 
 
-    <!-- Modal for Mark the task Completed -->
+    <!-- Modal for Mark the task Completed and Rejected -->
     <!-- starts Here -->
     <!-- Modal -->
 
-    <div class="modal fade" id="CompletedModal" tabindex="-1" aria-labelledby="CompletedModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="CompletedModalLabel">Mark Task As Completed</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="<?php $_SERVER['REQUEST_URI']?>">
-                        <div class="mb-3 my-3">
-                            <input type="hidden" name="Task_id" id="Task_id">
-                            <label for="desc" class="form-label">Write Description Here !</label>
-                            <textarea class="form-control" name="PartnerDesc"
-                                placeholder="What Your Have Done at Your Field Work" name="Completed_description"
-                                id="edit_desc" style="height: 100px"></textarea>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="completebtn" value='completing'>Mark As
-                        Completed</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <?php include 'partials/_markTaskModal.php'; ?>
 
     <!-- ends Here -->
+
+
 
 
     <div class="row">
@@ -113,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
             <li class="active"><a data-toggle="tab" href="#Pending">Pending Tasks</a></li>
             <li><a data-toggle="tab" href="#Accepted">Accepted Tasks</a></li>
             <li><a data-toggle="tab" href="#Completed">Completed Tasks</a></li>
+            <li><a data-toggle="tab" href="#Rejected">Rejected Tasks</a></li>
         </ul>
 
 
@@ -237,7 +217,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
                                 <td>'.$row['Task_pincode'].'</td>
                                 <td>
                                 <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
-                                <button type="button" class="btn btn-success completebtn secbtn" id='.$actual_Task_id.' data-toggle="modal" data-target="#CompletedModal">Mark As Completed</button>
+                                <button type="button" class="btn btn-success completebtn secbtn m-2" id='.$actual_Task_id.' data-toggle="modal" data-target="#CompletedModal">Mark As Completed</button>
+
+                                <button type="button" class="btn btn-success rejectbtn secbtn" id='.$actual_Task_id.' data-toggle="modal" data-target="#RejectedModal">Mark As Rejected</button>
                                 </td>
                             </tr>';
                             }
@@ -245,6 +227,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
                     </tbody>
                 </table>
             </div>
+
+
+            <!-- ==================REJECTED TASKS========================= -->
+
+
+
+            <div id="Rejected" class="tab-pane fade in">
+                <h3 class="mb-10 mt-4 text-4xl text-white">REJECTED TASKS</h3>
+                <table class="table table-striped" id=myTable4>
+                    <thead class="Theading">
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        $sno=0;
+                        $quer = "SELECT * FROM `greentask` where `Task_status`= 'Rejected'";
+                        $result = mysqli_query($con,$quer);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sno=$sno+1;
+                            $user_id =  $row['Task_user_id'];
+                            $actual_Task_id = $row['Task_sno'];
+                            echo '  <tr>
+                            <th scope="row">'.$sno.'</th>
+                            <td>'.$row['Task_state'].'</td>
+                            <td>'.$row['Task_address'].'</td>
+                            <td>'.$row['Task_pincode'].'</td>
+                            <td>
+                                
+                            <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
+                            </td>
+                        </tr>';
+                        }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+
+
         </div>
     </div>
 
@@ -261,6 +288,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
         $('#myTable1').DataTable();
         $('#myTable2').DataTable();
         $('#myTable3').DataTable();
+        $('#myTable4').DataTable();
+
         // $('#myTableAll').DataTable();
 
 
@@ -285,6 +314,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
     </script>
 
 
+    <!-- Rejection of Task -->
+    <script>
+    reject = document.getElementsByClassName('rejectbtn');
+    Array.from(reject).forEach((element) => {
+        element.addEventListener("click", (e) => {
+            Reject_Task_id.value = e.target.id;
+            // console.log(taskid);
+            // hiddenid.value = taskid;
+            // if (confirm("Are You Sure to want to Reject this Task")) {
+            //     window.location = `partner_previous_history.php?P_reject=${taskid}`;
+            // } else {
+            //     console.log("NO");
+            // }
+        })
+    })
+    </script>
+
+
     <!-- Completion of Task -->
     <script>
     MarkCompleteBtn = document.getElementsByClassName('completebtn');
@@ -298,13 +345,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['completebtn'] == 'completing
             // edit_title.value = title_sc;
             // edit_desc.value = description_sc;
 
-            Task_id.value = e.target
-                .id; //here it taking the id of button of completed and putting in into the hidden input of modal
+            Task_id.value = e.target.id; //here it taking the id of button of completed and putting in into the hidden input of modal
             // $("#CompletedModal").modal('data-toggle');
         })
     })
     </script>
-
 
 
 

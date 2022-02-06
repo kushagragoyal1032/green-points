@@ -48,7 +48,7 @@
 it is used to open a modal when we are opening photos by clicking on "click here button" */
 
 
-.modal {
+.modal, .P_modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -62,7 +62,7 @@ it is used to open a modal when we are opening photos by clicking on "click here
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-.modal-content {
+.modal-content, .P_modal-content {
     margin: auto;
     display: block;
     width: 80%;
@@ -76,7 +76,7 @@ it is used to open a modal when we are opening photos by clicking on "click here
     to {transform:scale(1)}
 }
 
-.close {
+.close, .P_close {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -87,7 +87,9 @@ it is used to open a modal when we are opening photos by clicking on "click here
 }
 
 .close:hover,
-.close:focus {
+.close:focus,  
+.P_close:hover,
+.P_close:focus{
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -95,19 +97,19 @@ it is used to open a modal when we are opening photos by clicking on "click here
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-    .modal-content {
+    .modal-content, .P_modal-content {
         width: 100%;
     }
 }
 
-#heading
+#heading, #P_heading
 {
     color: blue;
     margin-bottom:0;
     
 }
 
-#heading:hover
+#heading:hover, #P_heading:hover
 {
     color: skyblue;
 }
