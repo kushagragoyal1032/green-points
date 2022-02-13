@@ -85,7 +85,7 @@
 
         $coordinator_name = "Coordinator not assigned yet";
 
-        $quer2 =  "SELECT `Partner_name` FROM `partner` where `Partner_id`= $partner_id ";
+        $quer2 =  "SELECT * FROM `partner` where `Partner_id`= $partner_id ";
         $partner_result = mysqli_query($con,$quer2);
         if($partner_result)
         {

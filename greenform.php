@@ -182,7 +182,7 @@ else {
                                 required>
                         </div>
 
-                        <label class="form-label">Want to share My Contact Details</label>
+                        <label class="form-label">Want to <b>Hide</b> My Contact Details</label>
                         <div class="mb-4">
                         
                         <input type="checkbox" data-toggle="switchbutton" id="hide_contact_toggle"  data-onstyle="warning" onchange="hideDtls()">

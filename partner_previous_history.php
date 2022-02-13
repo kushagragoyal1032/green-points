@@ -72,6 +72,7 @@ if(isset($_GET['P_accept']))
     <?php include 'partials/_markTaskModal.php'; ?>
     <!-- ends Here -->
 
+
     <?php
         if(isset($_GET['operation']))
         {
