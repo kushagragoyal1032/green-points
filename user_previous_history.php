@@ -103,7 +103,7 @@
                                 <td>'.$row['Task_address'].'</td>
                                 <td>'.$row['Task_pincode'].'</td>
                                 <td>
-                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
+                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
 
                                 </td>
                             </tr>';
@@ -142,7 +142,7 @@
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
                             <td>
-                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
+                                <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                             </td>
                         </tr>';
                         }
@@ -181,7 +181,7 @@
                                 <td>'.substr($row['Task_address'],0,101).'</td>
                                 <td>'.$row['Task_pincode'].'</td>
                                 <td>
-                                    <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
+                                    <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                                 </td>
                             </tr>';
                             }
@@ -233,7 +233,7 @@
                                 <td>'.$row['Task_address'].'</td>
                                 <td>'.$row['Task_pincode'].'</td>
                                 <td>
-                                    <a href="user_details.php?TaskID='.$actual_Task_id.'"> '.$row['Task_status'].'</a>
+                                    <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                                 </td>
                             </tr>';
                             }

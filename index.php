@@ -16,10 +16,45 @@
 </head>
 
 <body>
-   
-    
     <?php include 'partials/_headerClient.php' ?>
-    <!--    banner  -->
+
+    <?php
+        if(isset($_GET['signupsuccess']))
+        {   
+            if ($_GET['signupsuccess']=="false") {
+                
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Sorry! </strong>'.$_GET['show'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+            else {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Congrats! </strong>Signed up Successfully, Your can now Login...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        }
+        ?>
+
+    <?php
+        if(isset($_GET['loginsuccess']))
+        {   
+            if ($_GET['loginsuccess']=="false") {
+                
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Sorry! </strong>'.$_GET['loginError'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+            else {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Congrats! </strong>You have Logged in Successfully...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        }
+        ?>
 
     <?php
         if(isset($_GET['loggedinsuccess']) && $_GET['loggedinsuccess']=="false")
@@ -28,11 +63,23 @@
             <strong>Sorry! You are not logged in </strong>'.$_GET['login_errormessage'].'
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
-        // echo $_GET['login_errormessage'];
         }
         ?>
+
+        <?php
+        if(isset($_GET['loggedoutsuccess']) && $_GET['loggedoutsuccess']=="true")
+        {
+            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+            <strong>Successfully </strong> Logged Out...
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+        ?>
+
     <section id="banner_section">
-        
+
+ 
+
         <div class="container ">
             <div class="row">
                 <div class="col-md-6 d">
@@ -41,8 +88,10 @@
                     <p class="mb-4 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat
                         corrupti modi ratione aliquam quae vero fuga atque at laudantium nemo? Excepturi non quisquam
                         praesentium aperiam corrupti laudantium quos totam perferendis.</p>
-                    <a href="greenform.php"><button type="button" class="btn btn-light green-btn">Make A Green Point</button></a>
-                    <a href="user_previous_history.php"><button type="button" class="btn btn-light green-btn">View My Tasks</button></a>
+                    <a href="greenform.php"><button type="button" class="btn btn-light green-btn">Make A Green
+                            Point</button></a>
+                    <a href="user_previous_history.php"><button type="button" class="btn btn-light green-btn">View My
+                            Tasks</button></a>
 
                 </div>
                 <!-- <div class="col-md-1 v1"> -->
@@ -160,13 +209,13 @@
     <!-- footer section -->
     <?php include 'partials/_footerClient.html' ?>
 
-  
+
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

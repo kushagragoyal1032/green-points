@@ -12,8 +12,23 @@ ob_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="full_style.css">
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">  <!-- for switch button-->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>          <!-- for switch button-->
+
+    <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
+    <style>
+        html {
+overflow: scroll;
+overflow-x: hidden;
+}
+::-webkit-scrollbar {
+width: 0px;
+::-webkit-scrollbar-thumb {
+background: #FF0000;
+}
+    </style>
 
     <script>
     // check box script
@@ -30,6 +45,22 @@ ob_start();
             text.style.display = "none";
             allt.value = "";
             leng.value = "";
+        }
+    }
+    </script>
+
+    <script>
+   
+    function hideDtls() {
+        
+        var togglebtn = document.getElementById("hide_contact_toggle");
+        var hide_contact = document.getElementById("hide_contact_details");
+        if (togglebtn.checked == true) {
+            hide_contact.value = "Encrypt";
+        } 
+        else 
+        {
+            hide_contact.value = "NonEncrypt";
         }
     }
     </script>
@@ -56,6 +87,7 @@ if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
         // $T_status = $_POST["partner_email"];
         $T_gps_link = $_POST["locationLink"];
         $T_user_desc = $_POST["green_desc"];
+        $Encryption_on_contacts = $_POST["green_enc_contact"];
        
 
     // image data
@@ -73,7 +105,7 @@ if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
             $image = $_FILES['image']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
             
-            $quer = "INSERT INTO `greentask` (`Task_user_id`, `Task_state`, `Task_city`, `Task_address`, `Task_pincode`, `Task_user_desc`, `Task_status`, `Task_gps_link`, `Task_images` , `Task_partner_id`) VALUES ('$T_userid', '$T_state', '$T_city', '$T_address', '$T_pincode', '$T_user_desc', 'Pending', '$T_gps_link', '$imgContent', '0')";
+            $quer = "INSERT INTO `greentask` (`Task_user_id`, `Task_state`, `Task_city`, `Task_address`, `Task_pincode`, `Task_user_desc`, `Task_status`, `Task_gps_link`, `Task_enc_contact` , `Task_images` , `Task_partner_id`) VALUES ('$T_userid', '$T_state', '$T_city', '$T_address', '$T_pincode', '$T_user_desc', 'Pending', '$T_gps_link', '$Encryption_on_contacts' , '$imgContent', '0')";
             
             $result = mysqli_query($con,$quer);
             
@@ -122,7 +154,7 @@ else {
 
 ?>
 
-    <div class="container-fluid w-100">
+    <div class="container-fluid w-100 " >
         <div class="row">
             <div class="col-md-4 left_side text-dark font-mono"
                 style="background-image: linear-gradient(to right, #5de035,#178250); overflow:scroll">
@@ -136,19 +168,31 @@ else {
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">City</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="green_city"
+                            <input type="text" class="form-control"  name="green_city"
                                 required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Green point Address</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="green_address"
+                            <input type="text" class="form-control"  name="green_address"
                                 required>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label">Pincode</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="green_pincode"
+                            <input type="text" class="form-control"  name="green_pincode"
                                 required>
                         </div>
+
+                        <label class="form-label">Want to share My Contact Details</label>
+                        <div class="mb-4">
+                        
+                        <input type="checkbox" data-toggle="switchbutton" id="hide_contact_toggle"  data-onstyle="warning" onchange="hideDtls()">
+                        </div>
+
+                        <div>
+                            <input type="hidden" id="hide_contact_details" value="NonEncrypt" name="green_enc_contact">
+                        </div>
+
+
 
                         <div class="mb-3">
                             <label class="form-label">Select Image File to Upload:</label>
@@ -239,6 +283,8 @@ else {
         loc_link.value = "https://maps.google.com/?q=" + position.coords.latitude + "," + position.coords.longitude;
     }
     </script>
+
+
 
 </body>
 

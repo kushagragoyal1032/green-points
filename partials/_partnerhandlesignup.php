@@ -33,7 +33,7 @@ else
     if($result)
     {
         $showAlert = true;
-        header("location:/green/partner.php?signupsuccess=true");
+        header("location:/green/partner.php?psignupsuccess=true");
         exit();
     }
   }
@@ -43,7 +43,7 @@ else
   }
 
 }
-header("location:/green/partner.php?signupsuccess=false&show='$showError'");
+header("location:/green/partner.php?psignupsuccess=false&show='$showError'");
   exit();
 
 $con->close();

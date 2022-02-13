@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="CompletedModalLabel">Mark Task As Completed</h5>
+                    <h5 class="modal-title" id="CompletedModalLabel">Mark Task1 As Completed</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -55,7 +55,7 @@
                     <form method="POST" action="partials/_markTaskHandle.php">
                         <div class="mb-3 my-3">
                         <input type="hidden" name="Rej_operation_from_Puser_details" id="Rej_operation_from_Puser_details">
-                            <input type="hidden" name="Reject_Task_id" id="Reject_Task_id">
+                            <input type="text" name="Reject_Task_id" id="Reject_Task_id">
                             <label for="desc" class="form-label">Mark Task As Rejected</label>
                             <textarea class="form-control" name="PartnerDesc"
                                 placeholder="Why are you rejecting this Task, Write Your Reason Here !!" name="Completed_description"

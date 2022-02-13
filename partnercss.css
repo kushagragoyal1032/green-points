@@ -37,7 +37,7 @@ html,body
     padding: 0 5px;
 }
 
-.navbar-nav li a{
+.navbtn{
     color: #fff !important;
     font-weight: 500;
 }

@@ -19,13 +19,17 @@ if(isset($_GET['P_accept']))
     $task_no = $_GET['P_accept'];
     $quer= "UPDATE `greentask` SET `Task_status` = 'Accepted', `Task_partner_id` = $partnerid WHERE `greentask`.`Task_sno` = $task_no";
     $result = mysqli_query($con,$quer);
+    if ($result) {
+            echo '<div class="alert alert-success alert-dismissible " role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p><i class="fa fa-check-circle"></i>Task has been Accepted Successfully.</p>
+            </div>';
+    }
 }
 
 ?>
-
-
-<!-- <?php include 'partials/_markTaskHandle.php'; ?> -->
-
 
 <head>
     <meta charset="UTF-8">
@@ -38,7 +42,7 @@ if(isset($_GET['P_accept']))
 
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="partnercss.css?v=<?php echo time(); ?>">
-
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
     <title>History</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -56,7 +60,7 @@ if(isset($_GET['P_accept']))
     }
     
     else {
-        $message = "Login First, to See your Activity";
+        $message = "Login First, to See Activity/Task";
         header("location:/green/partner.php?Ploggedinsuccess=false&Plogin_errormessage='$message'");
         ob_end_flush();
     }
@@ -65,11 +69,31 @@ if(isset($_GET['P_accept']))
 
     <!-- Modal for Mark the task Completed and Rejected -->
     <!-- starts Here -->
-    <!-- Modal -->
-
     <?php include 'partials/_markTaskModal.php'; ?>
-
     <!-- ends Here -->
+
+    <?php
+        if(isset($_GET['operation']))
+        {
+            if ($_GET['operation']=="completed") {
+                echo '<div class="alert alert-success alert-dismissible " role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <p><i class="fa fa-check-circle"></i>Congrats, Task has been Completed Successfully.</p>
+                </div>';
+            }
+            if ($_GET['operation']=="rejected") {
+                echo '<div class="alert alert-success alert-dismissible " role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <p><i class="fa fa-check-circle"></i>Task has been Rejected Successfully.</p>
+                </div>';
+            }
+        }
+        ?>
+    <!-- operation -->
 
 
 
@@ -280,7 +304,6 @@ if(isset($_GET['P_accept']))
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
     <script>
@@ -345,13 +368,19 @@ if(isset($_GET['P_accept']))
             // edit_title.value = title_sc;
             // edit_desc.value = description_sc;
 
-            Task_id.value = e.target.id; //here it taking the id of button of completed and putting in into the hidden input of modal
+            Complete_Task_id.value = e.target
+                .id; //here it taking the id of button of completed and putting in into the hidden input of modal
             // $("#CompletedModal").modal('data-toggle');
         })
     })
     </script>
 
-
+    <script>
+    $(".alert").show('medium');
+    setTimeout(function() {
+        $(".alert").hide('medium');
+    }, 2000);
+    </script>
 
 </body>
 

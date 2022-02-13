@@ -21,15 +21,15 @@ if($num == 1)
       $_SESSION['partnerisloggedin'] = true;
       $_SESSION['partnerid'] = $row["Partner_id"];  // this used to save id of logged in user
     //   $_SESSION['sno'] = $row["sno"];  // this used to save id of logged in user
-    //   $_SESSION['username'] = $row["user_name"];
-      header("location:/green/partner.php?loginsuccess=true");
+      $_SESSION['partnername'] = $row["Partner_name"];
+      header("location:/green/partner.php?ploginsuccess=true");
       exit();
 }
 else
 {
 
   $showLoginError = "User does not exist or invalid email and password !!";
-  header("location:/green/partner.php?loginError=$showLoginError&loginsuccess=false");
+  header("location:/green/partner.php?ploginError=$showLoginError&ploginsuccess=false");
  
 }
 $con->close();

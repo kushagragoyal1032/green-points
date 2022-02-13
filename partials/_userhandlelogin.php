@@ -20,14 +20,14 @@ if($num == 1)
       session_start();
       $_SESSION['userisloggedin'] = true;
       $_SESSION['userid'] = $row["User_id"];  // this used to save id of logged in user
-      // $_SESSION['username'] = $row["user_name"];
+      $_SESSION['username'] = $row["User_name"];
       header("location:/green/index.php?loginsuccess=true");
       exit();
 }
 else
 {
 
-  $showLoginError = "User does not exist or invalid email and password !!";
+  $showLoginError = " User does not exist or invalid email or password !!";
   header("location:/green/index.php?loginError=$showLoginError&loginsuccess=false");
   exit();
  

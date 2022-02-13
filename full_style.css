@@ -110,6 +110,13 @@
 }
 
 
+td
+{
+    text-align:center;
+    font-size: 18px;
+  vertical-align: center;
+}
+
 
 
 
@@ -134,3 +141,21 @@
     transform: translateX(-10px);
 
 }
+
+.alert{
+    display:none;
+    position: fixed !important;
+    top: 0px;
+    right: 0px;
+    width: 500px;
+    font-size: 19px;
+    margin-top: 95px;
+    font-weight: 500;
+  }
+
+  .fa {
+    margin-right:.5em;
+  }
+
+
+  

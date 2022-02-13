@@ -32,14 +32,7 @@
 
     
     
-    $quer = "SELECT * FROM `user` where `User_id`= $actual_loggedin_userID";
-    $result = mysqli_query($con,$quer);
-    while($row = mysqli_fetch_assoc($result))
-        {
-            $user_name = $row['User_name'];
-            $user_email = $row['User_email'];
-            $user_phone = $row['User_mobile'];   
-        }
+    
 
         $task_id = $_GET['TaskID'];
         $quer1 =  "SELECT * FROM `greentask` where `Task_sno`= $task_id ";
@@ -52,27 +45,57 @@
            $pincode =  $row['Task_pincode'];
            $status =  $row['Task_status'];
            $user_desc = $row['Task_user_desc'];
+           $partner_desc = $row['Task_partner_desc'];    // change
            $partner_id =  $row['Task_partner_id'];
            $location_link =  $row['Task_gps_link'];
+           $encryption = $row['Task_enc_contact'];
         }
 
-        $coordinator_name = "Coordinator not assigned yet";
+        $quer = "SELECT * FROM `user` where `User_id`= $actual_loggedin_userID";
+        $result = mysqli_query($con,$quer);
+        
+            while($row = mysqli_fetch_assoc($result))
+            {
+               $user_name = $row['User_name'];
+               $user_email = $row['User_email'];
+               if ($encryption=='NonEncrypt') 
+                {
+               $user_phone = $row['User_mobile'];   
+                }
+                else {
+                    $user_phone = "User Not Permitted";   
 
-        $quer2 =  "SELECT `Partner_name` FROM `partner` where `Partner_id`= $partner_id ";
+                }
+            }
+
+        $coordinator_name = "Coordinator not assigned yet";
+        $coordinator_ngo = "Coordinator not assigned yet";
+        $coordinator_email = "Coordinator not assigned yet";
+
+
+
+        $quer2 =  "SELECT * FROM `partner` where `Partner_id`= $partner_id ";
         $partner_result = mysqli_query($con,$quer2);
         if($partner_result)
         {
         while($row = mysqli_fetch_assoc($partner_result))
         {
            $coordinator_name =  $row['Partner_name'];
+           $coordinator_ngo = $row['Partner_ngo'];
+           $coordinator_email = $row['Partner_email'];
+
         }
 
         // for fetch photos fro databse
         $quer3 = "SELECT `Task_images` FROM `greentask` where `Task_sno`= $task_id ";
         $task_result3 = mysqli_query($con,$quer3);
 
+        // for fetch photos upload by partner from databse
+        $quer4 = "SELECT `Partner_task_image` FROM `greentask` where `Task_sno`= $task_id ";
+        $task_result_P_image = mysqli_query($con,$quer4);
+        }
 
-    }
+
 
 
      
@@ -89,6 +112,8 @@
                             <h3>'.$user_name.'</h3>
                         </div>
                         <div class="card-body">
+
+
                             <p class="mb-3"><strong class="pr-3">User ID:</strong>'.$actual_loggedin_userID.'</p>
                             <p class="mb-3"><strong class="pr-3">User Email:</strong>'.$user_email.'</p>
                             <p class="mb-3"><strong class="pr-3">User Mobile:</strong>'.$user_phone.'</p>
@@ -96,7 +121,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 ">
+                 <div class="col-lg-8 ">
                     <div class="card shadow-sm mt-6">
                         <div class="card-header bg-transparent border-0">
                             <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information </h3>
@@ -161,7 +186,7 @@
                                         </div>
                                     </div>'; ?>
 
-    <?php
+                            <?php
                             echo '</td>
                                 </th>
                             </tr>
@@ -179,8 +204,140 @@
                             <p>'.$user_desc.'</p>
                         </div>
                     </div>
-                </div>
-            </div>
+                 </div>';
+
+
+
+
+                 if($status == "Completed")  // if task Completed only then this part visible
+                 {  
+                          
+                 echo '<hr class="mt-5">
+                 <div class="col-lg-12 ">
+                    <div class="card shadow-sm mt-6">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Partner Information </h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th width="30%">Coordinator Name</th>
+                                    <td width="2%">:</td>
+                                    <td>'.$coordinator_name.'</td>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th width="30%">Coordinator\'s NGO</th>
+                                    <td width="2%">:</td>
+                                    <td>'.$coordinator_ngo.'</td>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th width="30%">Coordinator\'s Email</th>
+                                    <td width="2%">:</td>
+                                    <td>'.$coordinator_email.'</td>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th width="30%">Partner Images</th>
+                                        <td width="2%">:</td>
+
+                                        <td> <p id="P_heading">Click here</p>    
+                                        <div id="P_myModal" class="modal">
+
+                                        <!-- The Close Button -->
+                                        <span class="P_close">&times;</span>
+                                    
+                                        <!-- Modal Content (The Image) -->
+                                        <img class="P_modal-content" id="P_img01" alt="Image is not available">
+                                    
+                                        </div>
+                                        </div>'; ?>
+
+                                    <?php
+                                        echo '</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="height: 26px;"></div>
+
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Partner Description</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <p>'.$partner_desc.'</p>
+                        </div>
+                    </div>
+                </div>';
+              }  // if closed
+
+
+
+
+              if($status == "Rejected")  // if task Rejected only then this part visible
+              {  
+                      
+              echo '<hr class="mt-5">
+              <div class="col-lg-12 ">
+                  <div style="height: 26px;"></div>
+
+                  <div class="card shadow-sm">
+                      <div class="card-header bg-transparent border-0">
+                          <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Partner Description/ Reason</h3>
+                      </div>
+                      <div class="card-body pt-0">
+                          <p>'.$partner_desc.'</p>
+                      </div>
+                  </div>
+              </div>';
+          }  // if closed
+
+
+          if($status == "Accepted")  // if task Accepted only then this part visible
+          {  
+                  
+            echo '<hr class="mt-5">
+            <div class="col-lg-12 ">
+               <div class="card shadow-sm mt-6">
+                   <div class="card-header bg-transparent border-0">
+                       <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Partner Information </h3>
+                   </div>
+                   <div class="card-body pt-0">
+                       <table class="table table-bordered">
+                           <tr>
+                               <th width="30%">Coordinator Name</th>
+                               <td width="2%">:</td>
+                               <td>'.$coordinator_name.'</td>
+                               </th>
+                           </tr>
+
+                           <tr>
+                               <th width="30%">Coordinator\'s NGO</th>
+                               <td width="2%">:</td>
+                               <td>'.$coordinator_ngo.'</td>
+                               </th>
+                           </tr>
+
+                           <tr>
+                                <th width="30%">Coordinator\'s Email</th>
+                                <td width="2%">:</td>
+                                <td>'.$coordinator_email.'</td>
+                                </th>
+                            </tr>
+
+                       </table>
+                   </div>
+               </div>
+           </div>';
+      }  // if closed
+
+            '</div>
         </div>
     </div>';
     ?>
@@ -204,6 +361,7 @@
 
 
     <script>
+    // this script have user image logic
     var mainImage = document.getElementById("mainImage");
     var modal = document.getElementById("myModal");
     var heading = document.getElementById("heading");
@@ -221,6 +379,54 @@
         modal.style.display = "none";
     }
     </script>
+
+
+    <!-- --------------------------------------------------------->
+
+    <div style="display :none">
+        <!-- this div have partner image logic -->
+        <?php if(mysqli_num_rows($task_result_P_image) > 0)
+    { 
+        while($row = mysqli_fetch_assoc($task_result_P_image))
+        { 
+            ?>
+        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['Partner_task_image']); ?>"
+            id="partnerImage" />
+        <?php  } 
+    }
+
+    else 
+    {
+        echo ' <p class="status error">Image(s) not found</p>';
+    }?>
+    </div>
+
+    <?php
+    if($status == "Completed")  // if task Completed only then this part visible
+    {  
+    echo'<script>
+    // this script have partner image logic
+    var pmainImage = document.getElementById("partnerImage");
+    var pmodal = document.getElementById("P_myModal");
+    var pheading = document.getElementById("P_heading");
+    var pmodalImg = document.getElementById("P_img01");
+
+    pheading.onclick = function() {
+        pmodal.style.display = "block";
+        pmodalImg.src = pmainImage.src;
+    }
+
+    var pspan = document.getElementsByClassName("P_close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    pspan.onclick = function() {
+        pmodal.style.display = "none";
+    }
+    </script>';
+    }
+    ?>
+
+
 
 
 </body>

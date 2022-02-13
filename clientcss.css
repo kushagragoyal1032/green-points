@@ -4,13 +4,19 @@
     padding: 0;
 }
 
-
-
-
 body
 {
     font-family: sans-serif;
 }
+
+/* .ss
+{
+    position: relative;
+    overflow-y: hidden;
+    width:fit-content;
+    z-index: 9999;
+    justify-content: flex-end;
+} */
 
 #nav_bar
 {
@@ -35,7 +41,7 @@ body
     padding: 0 5px;
 }
 
-.navbar-nav li a{
+.navbtn{
     color: #fff !important;
     font-weight: 500;
 }
@@ -349,6 +355,7 @@ body
 {
    color: violet;
 }
+
 
 
 

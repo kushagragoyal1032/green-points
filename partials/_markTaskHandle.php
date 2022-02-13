@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['completebtn']))
                 $statusMsg = "File uploaded successfully."; 
 
                 if ($InnerforCompletion=="InnerCompletion") {
-                    header("location:/green/partner_side_user_details.php?TaskID=${hiddentaskid}");
+                    header("location:/green/partner_side_user_details.php?TaskID=$hiddentaskid&operation=completed");
                     
                 }
                 else {
-                    header("location:/green/partner_previous_history.php");
+                    header("location:/green/partner_previous_history.php?operation=completed");
                 }
             }
             
@@ -86,11 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['rejectbtn'])) {
     {
         if ($InnerforRejection=="InnerRejection") {
                 
-        header("location:/green/partner_side_user_details.php?TaskID=${hiddentaskid}");
+        header("location:/green/partner_side_user_details.php?TaskID=$hiddentaskid&operation=rejected");
             
         }
         else {
-            header("location:/green/partner_previous_history.php");
+            header("location:/green/partner_previous_history.php?operation=rejected");
             
         }
     }

@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="partnercss.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
     <title>Hello, world!</title>
 </head>
 
@@ -43,6 +44,70 @@
         </nav>
     </section>  -->
     <?php include 'partials/_headerPartner.php' ?> 
+
+
+    <?php
+        if(isset($_GET['psignupsuccess']))
+        {   
+            if ($_GET['psignupsuccess']=="false") {
+                
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Sorry! </strong>'.$_GET['show'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+            else {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Congrats! </strong>Signed up Successfully, Your can now Login...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        }
+        ?>
+
+
+    <?php
+        if(isset($_GET['ploginsuccess']))
+        {   
+            if ($_GET['ploginsuccess']=="false") {
+                
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Sorry! </strong>'.$_GET['ploginError'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+            else {
+                echo '<div class="alert alert-success alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Congrats! </strong>You have Logged in Successfully...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        }
+        ?>
+
+    <?php
+        if(isset($_GET['Ploggedinsuccess']) && $_GET['Ploggedinsuccess']=="false")
+        {
+            
+                echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+                <strong>Sorry! You are not logged in </strong>'.$_GET['Plogin_errormessage'].'
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+        }
+        ?>
+
+    <?php
+        if(isset($_GET['ploggedoutsuccess']) && $_GET['ploggedoutsuccess']=="true")
+        {
+            echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
+            <strong>Successfully </strong> Logged Out...
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+        ?>
+
+
+
     <!--    banner  -->
     <section id="banner_section1">
         <div class="container ">
@@ -171,53 +236,28 @@
     <!-- footer section -->
     <?php include 'partials/_footerPartner.html' ?>
 
-    <!-- <section id="footer1">
-        <img src="images/wave2.png" alt="" class="image-wave">
-        <div class="container text-center social">
-            <h1 class="find_title">FIND US AT</h1>
-            <a href=""><img src="images/instagram-icon.png" alt=""></a>
-            <a href=""><img src="images/facebook-icon.png" alt=""></a>
-            <a href=""><img src="images/twitter-icon.png" alt=""></a>
-            <a href=""><img src="images/linkedin-icon.png" alt=""></a>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 footer-subscribe ">
-                    <img src="images/logo.png" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, libero. Lorem ipsum dolor sit,
-                        amet consectetur adipisicing elit.
-                    </p>
-                </div>
-
-                <div class="col-md-4 footer-subscribe ">
-                    <h1>CONTACT US</h1>
-                    <p><img src="images/location.png" alt="" class="contact"> RamBhag Circle Road, Jaipur</p>
-                    <p><img src="images/phone.png" alt="" class="contact"> +91 9116412090</p>
-                    <p><img src="images/email.png" alt="" class="contact"> xyx1042@gmail.com</p>
-                </div>
-
-                <div class="col-md-4 footer-subscribe ">
-                    <h1>ABOUT US</h1>
-                    <p><img src="images/location.png" alt="" class="contact"> RamBhag Circle Main Road</p>
-                    <p><img src="images/phone.png" alt="" class="contact"> +91 9116412090</p>
-                    <p><img src="images/email.png" alt="" class="contact"> xyx1042@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+
+    <script>
+        const alerts = document.getElementsByClassName("alert");
+        // setTimeout(function(){
+        //     alerts.style.display='none';
+        // }, 500);
+        //     console.log("hello");
+
+        // $("#ss").delay(0).hide(0);
+        // $('#ss').delay(1000).fadeOut(300); 
+
+        $(function() {
+        setTimeout(function() { $(".alert").fadeOut(1000); }, 1200)
+        })
+    </script>
+
+    
 </body>
 
 </html>
