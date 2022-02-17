@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="user_details.css?v=<?php echo time(); ?>">
@@ -17,6 +19,10 @@
 </head>
 
 <body class="mybodystyle">
+
+<div class= "loading">
+<i class="loader"></i>
+</div>
 
     <?php include 'partials/_headerClient.php' ?>
     <a href="user_previous_history.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
@@ -102,8 +108,54 @@
 // $con->close();
 
 
-    echo '<div class="student-profile py-32 px-10">
+    echo '<div class="student-profile mb-5 px-10">
         <div class="container">
+        
+
+
+        <div class="col-lg-12 ">
+               <div class="card shadow-sm mt-6">
+                   <div class="card-header bg-transparent border-0">
+                       <h3 class="mb-0"> Task Status </h3>
+                   </div>
+                   <div class="card-body pt-0">
+                   <div class="row d-flex justify-content-center">
+                   <div class="col-12 text-center">
+                       <ul id="progressbar" class="text-center">';
+
+                       if ($status=="Pending") 
+                       {
+                            echo '<li class="active step0"><b>Pending</b></li>
+                            <li class=" step0"><b>Accepted</b></li>
+                            <li class=" step0"><b>Completed</b></li>';
+                       }
+                       else if ($status=="Accepted") 
+                       {
+                            echo '<li class="active step0"><b>Pending</b></li>
+                            <li class="active step0"><b>Accepted</b></li>
+                            <li class=" step0"><b>Completed</b></li>';
+                       }
+                       else if($status=="Completed")
+                       {
+                            echo '<li class="active step0"><b>Pending</b></li>
+                            <li class="active step0"><b>Accepted</b></li>
+                            <li class="active step0"><b>Completed</b></li>';
+                       }
+                       else {
+                            echo '<li class="active step0"><b>Pending</b></li>
+                            <li class="active step0"><b>Accepted</b></li>
+                            <li class="active step0"><b>Rejected</b></li>';
+                       }
+                       
+                       echo '</ul>
+                   </div>
+               </div>
+                   </div>
+               </div>
+           </div>
+
+
+
             <div class="row">
                 <div class="col-lg-4 ">
                     <div class="card shadow-sm mt-4">
@@ -124,7 +176,7 @@
                  <div class="col-lg-8 ">
                     <div class="card shadow-sm mt-6">
                         <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information </h3>
+                            <h3 class="mb-0">General Information </h3>
                         </div>
                         <div class="card-body pt-0">
                             <table class="table table-bordered">
@@ -216,7 +268,7 @@
                  <div class="col-lg-12 ">
                     <div class="card shadow-sm mt-6">
                         <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Partner Information </h3>
+                            <h3 class="mb-0">Partner Information </h3>
                         </div>
                         <div class="card-body pt-0">
                             <table class="table table-bordered">
@@ -426,7 +478,11 @@
     }
     ?>
 
-
+<script>  // for loading
+  $(window).on('load', function () {
+    $('.loading').fadeOut("slow");
+  }) 
+</script>
 
 
 </body>

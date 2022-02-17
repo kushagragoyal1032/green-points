@@ -13,21 +13,27 @@ ob_start();
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">  <!-- for switch button-->
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>          <!-- for switch button-->
-
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
+        rel="stylesheet"> <!-- for switch button-->
+    <script
+        src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js">
+    </script> <!-- for switch button-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
     <style>
-        html {
-overflow: scroll;
-overflow-x: hidden;
-}
-::-webkit-scrollbar {
-width: 0px;
-::-webkit-scrollbar-thumb {
-background: #FF0000;
-}
+    html {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+
+        ::-webkit-scrollbar-thumb {
+            background: #FF0000;
+        }
     </style>
 
     <script>
@@ -50,16 +56,13 @@ background: #FF0000;
     </script>
 
     <script>
-   
     function hideDtls() {
-        
+
         var togglebtn = document.getElementById("hide_contact_toggle");
         var hide_contact = document.getElementById("hide_contact_details");
         if (togglebtn.checked == true) {
             hide_contact.value = "Encrypt";
-        } 
-        else 
-        {
+        } else {
             hide_contact.value = "NonEncrypt";
         }
     }
@@ -68,10 +71,15 @@ background: #FF0000;
     <title>2nd page</title>
 
 </head>
+
 <body>
 
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+
     <?php include 'partials/_headerClient.php'?>
-<?php 
+    <?php 
 
 
 if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
@@ -154,7 +162,7 @@ else {
 
 ?>
 
-    <div class="container-fluid w-100 " >
+    <div class="container-fluid w-100 ">
         <div class="row">
             <div class="col-md-4 left_side text-dark font-mono"
                 style="background-image: linear-gradient(to right, #5de035,#178250); overflow:scroll">
@@ -168,24 +176,22 @@ else {
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">City</label>
-                            <input type="text" class="form-control"  name="green_city"
-                                required>
+                            <input type="text" class="form-control" name="green_city" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Green point Address</label>
-                            <input type="text" class="form-control"  name="green_address"
-                                required>
+                            <input type="text" class="form-control" name="green_address" required>
                         </div>
                         <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label">Pincode</label>
-                            <input type="text" class="form-control"  name="green_pincode"
-                                required>
+                            <input type="text" class="form-control" name="green_pincode" required>
                         </div>
 
                         <label class="form-label">Want to <b>Hide</b> My Contact Details</label>
                         <div class="mb-4">
-                        
-                        <input type="checkbox" data-toggle="switchbutton" id="hide_contact_toggle"  data-onstyle="warning" onchange="hideDtls()">
+
+                            <input type="checkbox" data-toggle="switchbutton" id="hide_contact_toggle"
+                                data-onstyle="warning" onchange="hideDtls()">
                         </div>
 
                         <div>
@@ -196,7 +202,7 @@ else {
 
                         <div class="mb-3">
                             <label class="form-label">Select Image File to Upload:</label>
-                            <input type="file" class="form-control" name="image" >
+                            <input type="file" class="form-control" name="image">
                             <p class="form-text text-danger mt-1 ml-0">* Please Select only one Image</p>
 
                         </div>
@@ -284,7 +290,12 @@ else {
     }
     </script>
 
-
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
+    </script>
 
 </body>
 

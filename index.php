@@ -11,11 +11,17 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
     <title>My, world!</title>
 </head>
 
 <body>
+
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+
     <?php include 'partials/_headerClient.php' ?>
 
     <?php
@@ -66,7 +72,7 @@
         }
         ?>
 
-        <?php
+    <?php
         if(isset($_GET['loggedoutsuccess']) && $_GET['loggedoutsuccess']=="true")
         {
             echo '<div class="alert alert-danger alert-dismissible fade show mb-0" role="alert" data-tor="show:[rotateX.from(90deg) @--tor-translateZ(-5rem; 0rem) pull.down(full)] slow">
@@ -78,7 +84,7 @@
 
     <section id="banner_section">
 
- 
+
 
         <div class="container ">
             <div class="row">
@@ -222,6 +228,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
+    <script>
+    const alerts = document.getElementsByClassName("alert");
+
+    $(function() {
+        setTimeout(function() {
+            $(".alert").fadeOut(1000);
+        }, 1200)
+    })
+    </script>
+
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
+    </script>
+
 </body>
 
 </html>

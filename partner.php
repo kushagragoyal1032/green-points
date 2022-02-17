@@ -11,39 +11,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
     <title>Hello, world!</title>
 </head>
 
 <body>
-    <!-- <section id="nav_bar">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link ">Disabled</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </section>  -->
-    <?php include 'partials/_headerPartner.php' ?> 
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+    
+    <?php include 'partials/_headerPartner.php' ?>
 
 
     <?php
@@ -118,7 +95,8 @@
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat
                         corrupti modi ratione aliquam quae vero fuga atque at laudantium nemo? Excepturi non quisquam
                         praesentium aperiam corrupti laudantium quos totam perferendis.</p>
-                        <a href="partner_previous_history.php"> <button type="button" class="btn btn-light green-btn">Take My Case</button></a>
+                    <a href="partner_previous_history.php"> <button type="button" class="btn btn-light green-btn">Take
+                            My Case</button></a>
                 </div>
                 <!-- <div class="col-md-1 v1"> -->
                 <div class="col-md-6 image-tree text-center d-none d-sm-block">
@@ -236,28 +214,37 @@
     <!-- footer section -->
     <?php include 'partials/_footerPartner.html' ?>
 
-  
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 
     <script>
-        const alerts = document.getElementsByClassName("alert");
-        // setTimeout(function(){
-        //     alerts.style.display='none';
-        // }, 500);
-        //     console.log("hello");
+    const alerts = document.getElementsByClassName("alert");
+    // setTimeout(function(){
+    //     alerts.style.display='none';
+    // }, 500);
+    //     console.log("hello");
 
-        // $("#ss").delay(0).hide(0);
-        // $('#ss').delay(1000).fadeOut(300); 
+    // $("#ss").delay(0).hide(0);
+    // $('#ss').delay(1000).fadeOut(300); 
 
-        $(function() {
-        setTimeout(function() { $(".alert").fadeOut(1000); }, 1200)
-        })
+    $(function() {
+        setTimeout(function() {
+            $(".alert").fadeOut(1000);
+        }, 1200)
+    })
     </script>
 
-    
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
+    </script>
+
+
 </body>
 
 </html>

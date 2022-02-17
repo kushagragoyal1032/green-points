@@ -9,6 +9,8 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="user_details.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
@@ -18,13 +20,17 @@
 
 <body class="mybodystyle">
 
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+
     <?php include 'partials/_headerPartner.php' ?>
     <a href="partner_previous_history.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
 
 
 
 
-        <?php
+    <?php
         if(isset($_GET['operation']))
         {
             if ($_GET['operation']=="completed") {
@@ -46,7 +52,7 @@
 
 
 
-        <?php 
+    <?php 
         include 'partials/_db_connect.php';
         $task_id = $_GET["TaskID"];
         if(isset($_GET['Opearation']) && $_GET['Opearation']=="Acceptation")
@@ -118,8 +124,53 @@
  // $con->close();
 
 
-    echo '<div class="student-profile py-32 px-10">
+    echo '<div class="student-profile mb-5 px-10">
         <div class="container">
+
+
+        <div class="col-lg-12 mb-4">
+        <div class="card shadow-sm mt-6">
+            <div class="card-header bg-transparent border-0">
+                <h3 class="mb-0"> Task Status </h3>
+            </div>
+            <div class="card-body pt-0">
+            <div class="row d-flex justify-content-center">
+            <div class="col-12 text-center">
+                <ul id="progressbar" class="text-center">';
+
+                if ($status=="Pending") 
+                {
+                     echo '<li class="active step0"><b>Pending</b></li>
+                     <li class=" step0"><b>Accepted</b></li>
+                     <li class=" step0"><b>Completed</b></li>';
+                }
+                else if ($status=="Accepted") 
+                {
+                     echo '<li class="active step0"><b>Pending</b></li>
+                     <li class="active step0"><b>Accepted</b></li>
+                     <li class=" step0"><b>Completed</b></li>';
+                }
+                else if($status=="Completed")
+                {
+                     echo '<li class="active step0"><b>Pending</b></li>
+                     <li class="active step0"><b>Accepted</b></li>
+                     <li class="active step0"><b>Completed</b></li>';
+                }
+                else {
+                     echo '<li class="active step0"><b>Pending</b></li>
+                     <li class="active step0"><b>Accepted</b></li>
+                     <li class="active step0"><b>Rejected</b></li>';
+                }
+                
+                echo '</ul>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+
+
             <div class="row">
                 <div class="col-lg-4 ">';
 
@@ -298,7 +349,7 @@
                                         </div>
                                         </div>'; ?>
 
-                                    <?php
+    <?php
                                         echo '</td>
                                 </tr>
                             </table>
@@ -480,6 +531,13 @@
     setTimeout(function() {
         $(".alert").hide('medium');
     }, 2000);
+    </script>
+
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
     </script>
 
 

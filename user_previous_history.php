@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
-    <!-- <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>"> -->
+    <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
 
 
 
@@ -24,12 +24,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 </head>
 
 <body class="mybg">
 
-<?php 
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+
+    <?php 
     
     
     session_start();
@@ -47,7 +53,7 @@
     }
     ?>
 
-<div class="row">
+    <div class="row">
         <div class="col-md-1" style="align-left">
             <a href="index.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
         </div>
@@ -87,7 +93,7 @@
 
                     <tbody>
 
-                      
+
 
                         <?php
                         
@@ -129,7 +135,7 @@
                     </thead>
                     <tbody>
 
-                    <?php
+                        <?php
                         $sno=0;
                         $quer = "SELECT * FROM `greentask` where `Task_user_id`= $userid and `Task_status`= 'Pending'";
                         $result = mysqli_query($con,$quer);
@@ -220,7 +226,7 @@
                     </thead>
                     <tbody>
 
-                    <?php
+                        <?php
                             $sno=0;
                             $quer = "SELECT * FROM `greentask` where `Task_user_id`= $userid and `Task_status`= 'Accepted'";
                             $result = mysqli_query($con,$quer);
@@ -256,28 +262,35 @@
         </div>
 
 
-      </div>
+    </div>
 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#myTable1').DataTable();
-            $('#myTable2').DataTable();
-            $('#myTable3').DataTable();
-            $('#myTableAll').DataTable();
+    $(document).ready(function() {
+        $('#myTable1').DataTable();
+        $('#myTable2').DataTable();
+        $('#myTable3').DataTable();
+        $('#myTableAll').DataTable();
 
 
-        });
+    });
     </script>
- 
+
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
+    </script>
+
 </body>
 
 </html>

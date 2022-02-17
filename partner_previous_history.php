@@ -53,6 +53,11 @@ if(isset($_GET['P_accept']))
 
 
 <body class="mybg">
+
+    <div class="loading">
+        <i class="loader"></i>
+    </div>
+
     <?php 
     if(isset($_SESSION['partnerisloggedin']) && $_SESSION['partnerisloggedin']==true)
     {
@@ -381,6 +386,13 @@ if(isset($_GET['P_accept']))
     setTimeout(function() {
         $(".alert").hide('medium');
     }, 2000);
+    </script>
+
+    <script>
+    // for loading
+    $(window).on('load', function() {
+        $('.loading').fadeOut("slow");
+    })
     </script>
 
 </body>
