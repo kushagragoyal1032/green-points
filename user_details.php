@@ -114,7 +114,7 @@
 
 
         <div class="col-lg-12 ">
-               <div class="card shadow-sm mt-6">
+               <div class="card trackcard shadow-sm mt-6">
                    <div class="card-header bg-transparent border-0">
                        <h3 class="mb-0"> Task Status </h3>
                    </div>

@@ -184,12 +184,9 @@ td
     padding-left: 13% !important;
     padding-right: 13% !important
 } */
-.card {
+.trackcard {
     z-index: 0;
     background-color: #ECEFF1;
-    /* padding-bottom: 20px;
-    margin-top: 90px;
-    margin-bottom: 90px; */
     border-radius: 10px
 }
 
