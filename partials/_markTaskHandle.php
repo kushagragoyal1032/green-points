@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['completebtn']))
     $partner_desc = $_POST["PartnerDesc"];
     $InnerforCompletion = $_POST["Com_operation_from_Puser_details"];
     
+    $activity_timestamp = date("d-M-Y");
+
 
     // image data
 
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['completebtn']))
             $image = $_FILES['pimage']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
             
-            $sql = "UPDATE `greentask` SET `Task_status` = 'Completed', `Task_partner_desc` = '$partner_desc', `Partner_task_image` = '$imgContent' WHERE `greentask`.`Task_sno` = '$hiddentaskid'";
+            $sql = "UPDATE `greentask` SET `Task_status` = 'Completed', `Task_partner_desc` = '$partner_desc', `Partner_task_image` = '$imgContent', `Task_activity_timestamp` = '$activity_timestamp' WHERE `greentask`.`Task_sno` = '$hiddentaskid'";
             
             $result = mysqli_query($con,$sql);
             
@@ -79,8 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['rejectbtn'])) {
     $hiddentaskid = $_POST["Reject_Task_id"];
     $partner_desc = $_POST["PartnerDesc"];
     $InnerforRejection = $_POST["Rej_operation_from_Puser_details"];
+    $activity_timestamp = date("d-M-Y");
 
-    $sql = "UPDATE `greentask` SET `Task_status` = 'Rejected', `Task_partner_desc` = '$partner_desc' WHERE `greentask`.`Task_sno` = '$hiddentaskid'";
+    $sql = "UPDATE `greentask` SET `Task_status` = 'Rejected', `Task_partner_desc` = '$partner_desc', `Task_activity_timestamp` = '$activity_timestamp' WHERE `greentask`.`Task_sno` = '$hiddentaskid'";
     $result = mysqli_query($con,$sql);
     if ($result) 
     {

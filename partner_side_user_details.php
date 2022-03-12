@@ -28,8 +28,6 @@
     <a href="partner_previous_history.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
 
 
-
-
     <?php
         if(isset($_GET['operation']))
         {
@@ -128,7 +126,7 @@
         <div class="container">
 
 
-        <div class="col-lg-12 mb-4">
+        <div class="col-lg-12 mb-4" style="z-index: -1">
         <div class="card trackcard shadow-sm mt-6">
             <div class="card-header bg-transparent border-0">
                 <h3 class="mb-0"> Task Status </h3>

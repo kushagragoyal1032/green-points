@@ -17,7 +17,8 @@ ini_set('default_socket_timeout',300);
 if(isset($_GET['P_accept']))
 {
     $task_no = $_GET['P_accept'];
-    $quer= "UPDATE `greentask` SET `Task_status` = 'Accepted', `Task_partner_id` = $partnerid WHERE `greentask`.`Task_sno` = $task_no";
+    $activity_timestamp = date("d-M-Y");
+    $quer= "UPDATE `greentask` SET `Task_status` = 'Accepted', `Task_partner_id` = $partnerid, `Task_activity_timestamp` = '$activity_timestamp' WHERE `greentask`.`Task_sno` = $task_no";
     $result = mysqli_query($con,$quer);
     if ($result) {
             echo '<div class="alert alert-success alert-dismissible " role="alert">
@@ -140,6 +141,7 @@ if(isset($_GET['P_accept']))
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status | Operation</th>
                             <!-- <th scope="col">Operation</th> -->
                         </tr>
@@ -159,6 +161,7 @@ if(isset($_GET['P_accept']))
                             <td>'.$row['Task_state'].'</td>
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
+                            <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                             <td>
                                 
                             <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
@@ -185,6 +188,7 @@ if(isset($_GET['P_accept']))
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
 
                         </tr>
@@ -203,6 +207,7 @@ if(isset($_GET['P_accept']))
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.substr($row['Task_address'],0,101).'</td>
                                 <td>'.$row['Task_pincode'].'</td>
+                                <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                                 <td>
                                 <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
 
@@ -227,6 +232,7 @@ if(isset($_GET['P_accept']))
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status | Operation</th>
 
                         </tr>
@@ -245,6 +251,7 @@ if(isset($_GET['P_accept']))
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.$row['Task_address'].'</td>
                                 <td>'.$row['Task_pincode'].'</td>
+                                <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                                 <td>
                                 <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                                 <button type="button" class="btn btn-success completebtn secbtn m-2" id='.$actual_Task_id.' data-toggle="modal" data-target="#CompletedModal">Mark As Completed</button>
@@ -272,6 +279,7 @@ if(isset($_GET['P_accept']))
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
@@ -290,6 +298,7 @@ if(isset($_GET['P_accept']))
                             <td>'.$row['Task_state'].'</td>
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
+                            <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                             <td>
                                 
                             <a href="partner_side_user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>

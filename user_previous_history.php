@@ -86,15 +86,11 @@
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
-
-
                     <tbody>
-
-
-
                         <?php
                         
                             $sno=0;
@@ -108,6 +104,7 @@
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.$row['Task_address'].'</td>
                                 <td>'.$row['Task_pincode'].'</td>
+                                <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                                 <td>
                                 <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
 
@@ -130,6 +127,7 @@
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
@@ -147,6 +145,7 @@
                             <td>'.$row['Task_state'].'</td>
                             <td>'.$row['Task_address'].'</td>
                             <td>'.$row['Task_pincode'].'</td>
+                            <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                             <td>
                                 <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                             </td>
@@ -169,6 +168,7 @@
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
@@ -186,6 +186,7 @@
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.substr($row['Task_address'],0,101).'</td>
                                 <td>'.$row['Task_pincode'].'</td>
+                                <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                                 <td>
                                     <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                                 </td>
@@ -221,6 +222,7 @@
                             <th scope="col">State</th>
                             <th scope="col">Area</th>
                             <th scope="col">Pincode</th>
+                            <th scope="col">Last Activity</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
@@ -238,6 +240,7 @@
                                 <td>'.$row['Task_state'].'</td>
                                 <td>'.$row['Task_address'].'</td>
                                 <td>'.$row['Task_pincode'].'</td>
+                                <td>'.date("d-M-Y",strtotime($row['Task_activity_timestamp'])).'</td> 
                                 <td>
                                     <a href="user_details.php?TaskID='.$actual_Task_id.'"> <button type="button" class="btn mainbtn m-2">'.$row['Task_status'].'</button></a>
                                 </td>

@@ -13,6 +13,21 @@ $U_phone = $_POST["user_phone"];
 $U_password = $_POST["user_pass"];
 $U_cpassword = $_POST["user_cpass"];
 
+$U_name = str_replace("<", "&lt", $U_name);
+$U_name = str_replace(">", "&gt", $U_name); 
+
+$U_email_id = str_replace("<", "&lt", $U_email_id);
+$U_email_id = str_replace(">", "&gt", $U_email_id); 
+
+$U_phone = str_replace("<", "&lt", $U_phone);
+$U_phone = str_replace(">", "&gt", $U_phone);
+
+$U_password = str_replace("<", "&lt", $U_password);
+$U_password = str_replace(">", "&gt", $U_password);
+
+$U_cpassword = str_replace("<", "&lt", $U_cpassword);
+$U_cpassword = str_replace(">", "&gt", $U_cpassword);
+
 $Existquer = "select * from user where User_email = '$U_email_id'";
 $result = mysqli_query($con,$Existquer);
 $Existnum = mysqli_num_rows($result);

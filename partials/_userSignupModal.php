@@ -22,7 +22,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPhone1" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="exampleInputPhone1" name="user_phone"
+                            <input type="text" class="form-control" id="exampleInputPhone1" name="user_phone" maxlength=10
                                 aria-describedby="phoneHelp" required>
                             
                         </div>

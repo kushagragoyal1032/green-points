@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="signup_partner_phone" class="form-label">Phone No</label>
-                        <input type="text" class="form-control" id="signup_partner_phone" name="partner_phone"
+                        <input type="text" class="form-control" id="signup_partner_phone" name="partner_phone" maxlength=10
                             aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">

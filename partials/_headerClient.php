@@ -51,11 +51,11 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <img alt="SourceLink" style="height: 34px; width:34px" src="images/manprofile.png"/>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle navbtn" class="dropdown-switch" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" onmouseover="droptoggle(this)"   aria-expanded="false">
+          <a class="nav-link dropdown-toggle navbtn" class="dropdown-switch" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             '.$_SESSION['username'].'   
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">View Profile</a></li>
+            <li><a class="dropdown-item" href="user_profile.php?showuserid='.$actual_loggedin_userID.'">View Profile</a></li>
             <li><a class="dropdown-item" href="greenform.php">Make Green Point</a></li>
             <li><a class="dropdown-item" href="user_previous_history.php">My Tasks</a></li>
           </ul>

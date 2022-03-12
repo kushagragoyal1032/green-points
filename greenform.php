@@ -96,6 +96,24 @@ if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
         $T_gps_link = $_POST["locationLink"];
         $T_user_desc = $_POST["green_desc"];
         $Encryption_on_contacts = $_POST["green_enc_contact"];
+
+        $activity_timestamp = date("d-M-Y");
+
+
+        $T_state = str_replace("<", "&lt", $T_state);
+        $T_state = str_replace(">", "&gt", $T_state); 
+
+        $T_city = str_replace("<", "&lt", $T_city);
+        $T_city = str_replace(">", "&gt", $T_city); 
+
+        $T_address = str_replace("<", "&lt", $T_address);
+        $T_address = str_replace(">", "&gt", $T_address);
+
+        $T_pincode = str_replace("<", "&lt", $T_pincode);
+        $T_pincode = str_replace(">", "&gt", $T_pincode);
+
+        $T_user_desc = str_replace("<", "&lt", $T_user_desc);
+        $T_user_desc = str_replace(">", "&gt", $T_user_desc);
        
 
     // image data
@@ -113,7 +131,7 @@ if(isset($_SESSION['userisloggedin']) && $_SESSION['userisloggedin']==true)
             $image = $_FILES['image']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
             
-            $quer = "INSERT INTO `greentask` (`Task_user_id`, `Task_state`, `Task_city`, `Task_address`, `Task_pincode`, `Task_user_desc`, `Task_status`, `Task_gps_link`, `Task_enc_contact` , `Task_images` , `Task_partner_id`) VALUES ('$T_userid', '$T_state', '$T_city', '$T_address', '$T_pincode', '$T_user_desc', 'Pending', '$T_gps_link', '$Encryption_on_contacts' , '$imgContent', '0')";
+            $quer = "INSERT INTO `greentask` (`Task_user_id`, `Task_state`, `Task_city`, `Task_address`, `Task_pincode`, `Task_user_desc`, `Task_status`, `Task_gps_link`, `Task_enc_contact` , `Task_images` , `Task_partner_id`, `Task_activity_timestamp`) VALUES ('$T_userid', '$T_state', '$T_city', '$T_address', '$T_pincode', '$T_user_desc', 'Pending', '$T_gps_link', '$Encryption_on_contacts' , '$imgContent','0', '$activity_timestamp')";
             
             $result = mysqli_query($con,$quer);
             
@@ -184,7 +202,7 @@ else {
                         </div>
                         <div class="mb-4">
                             <label for="exampleInputPassword1" class="form-label">Pincode</label>
-                            <input type="text" class="form-control" name="green_pincode" required>
+                            <input type="text" class="form-control" name="green_pincode" maxlength=6 required>
                         </div>
 
                         <label class="form-label">Want to <b>Hide</b> My Contact Details</label>
@@ -202,7 +220,7 @@ else {
 
                         <div class="mb-3">
                             <label class="form-label">Select Image File to Upload:</label>
-                            <input type="file" class="form-control" name="image">
+                            <input type="file" accept="image/* " class="form-control" name="image" required>
                             <p class="form-text text-danger mt-1 ml-0">* Please Select only one Image</p>
 
                         </div>
@@ -219,14 +237,14 @@ else {
                                 <div class="col-md-6 col-6 ">
                                     <div class="">
                                         <label for="exampleInputPassword1" class="form-label">allti</label>
-                                        <input type="text" class="form-control" id="allt">
+                                        <input readonly  type="text" class="form-control" id="allt">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 col-6">
                                     <div class="">
                                         <label for="exampleInputPassword1" class="form-label">legni</label>
-                                        <input type="text" class="form-control" id="leng">
+                                        <input readonly  type="text" class="form-control" id="leng">
                                     </div>
                                 </div>
 
@@ -286,6 +304,9 @@ else {
         // "<br>Longitude: " + position.coords.longitude;
         allt.value = position.coords.latitude;
         leng.value = position.coords.longitude;
+
+        
+
         loc_link.value = "https://maps.google.com/?q=" + position.coords.latitude + "," + position.coords.longitude;
     }
     </script>
