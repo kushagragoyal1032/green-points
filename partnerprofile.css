@@ -2,7 +2,7 @@ body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background: linear-gradient(to right, #3edfdf,#52e2c5);
+    background: linear-gradient(to right, #28ecec,#06c47b);
    
 }
 .main-body {
@@ -65,8 +65,11 @@ body{
 {
     border-radius: 30px  !important;
     /* border-top: #1a202c; */
-    border-left-color: #ff9d09 !important;
-    border-right-color: #ff9d09 !important;
+    /* border-left-color: #1897ff !important; */
+    border-top-color: #0832a5 !important;
+    /* border-right-color: #240592 !important; */
+    border-bottom-color: #9009ff!important;
+
     border-width: 3px !important;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.20);
 }
@@ -76,7 +79,7 @@ body{
     position: relative;
 }
 
-.profile_image:hover
+.partner_profile_image:hover
 {
     cursor: pointer;
     transition: 0.2s;
@@ -84,7 +87,7 @@ body{
 }
 
 
-.profile_image
+.partner_profile_image
 {
    width: 150px;
    height:150px;

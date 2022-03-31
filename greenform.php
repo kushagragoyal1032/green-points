@@ -68,7 +68,7 @@ ob_start();
     }
     </script>
 
-    <title>2nd page</title>
+    <title>Green Point | Creation Page</title>
 
 </head>
 

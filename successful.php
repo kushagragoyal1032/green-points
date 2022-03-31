@@ -93,9 +93,7 @@
                     <hr class="w-10 " style="margin: 20px; margin-left: 50px; margin-right: 50px;"> -->
                 </div>
 
-                <div class="col-md-7 p-2 text-center">
-
-                </div>
+                <p class="texts" id="redirection_countdown">Redirect to Home in ()</p>
             </div>
             <a href="/green/index.php"><button type="button" class="btn btn-light green-btn">Go to Home</button></a>
         </div>
@@ -143,14 +141,37 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+    <script>
+    document.title = "Submited Successfully | GreenPoint Created";
+    </script>
+    <script>
+    let cdown = document.getElementById('redirection_countdown');
+    var i = 10;
+    function myLoop() {
+        setTimeout(function() {
+            console.log(i);
+            cdown.innerHTML = `Redirect to Home in (${i})`;
+            i--;
+            if (i >= 0) {
+                myLoop();
+            }
+        }, 1000)
+    }
+
+    myLoop();
+
+    setTimeout(function() {
+        window.location.href = 'index.php';
+    }, 10000);
+    </script>
 </body>
 
 </html>

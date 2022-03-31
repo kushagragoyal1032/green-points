@@ -19,7 +19,7 @@
 
 
 
-    <title>History</title>
+    <title>Your Tasks | States</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div class="mt-10 ml-32 mr-32 p-10 mb-32"
+    <div class="mt-10 md:ml-32 md:mr-32 p-10 mb-32  sm:ml-0 sm:mr-0 "
         style="border-radius: 10px ; text-align: center; background-image: linear-gradient(to right, #5de035,#26ddb9); min-height: 700px; ">
 
         <ul class="nav nav-tabs">
@@ -79,6 +79,7 @@
 
             <div id="AllTasks" class="tab-pane fade in active">
                 <h3 class="mb-10 mt-4 text-4xl text-white">All TASKS</h3>
+                <div style="overflow-x:auto;">
                 <table class="table table-striped" id=myTableAll>
                     <thead>
                         <tr>
@@ -114,6 +115,7 @@
                         ?>
                     </tbody>
                 </table>
+                </div>
             </div>
 
             <!-- =========================================== -->

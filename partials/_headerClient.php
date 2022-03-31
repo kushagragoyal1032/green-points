@@ -17,7 +17,7 @@
     <section id="nav_bar">
         <nav class="navbar navv navbar-expand-lg navbar-light ">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
+                <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,16 +26,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item ">
-                            <a class="nav-link navbtn" href="#">Home</a>
+                            <a class="nav-link navbtn" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link navbtn" href="#">Features</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbtn" href="#">Pricing</a>
+                            <a class="nav-link navbtn" href="about_us.php">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbtn" href="partner.php">Partner</a>
+                            <a class="nav-link navbtn" href="partner.php">Partner Portal</a>
                         </li>
 
 
@@ -55,7 +55,7 @@
             '.$_SESSION['username'].'   
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="user_profile.php?showuserid='.$actual_loggedin_userID.'">View Profile</a></li>
+            <li><a class="dropdown-item" href="user_profile.php">View Profile</a></li>
             <li><a class="dropdown-item" href="greenform.php">Make Green Point</a></li>
             <li><a class="dropdown-item" href="user_previous_history.php">My Tasks</a></li>
           </ul>

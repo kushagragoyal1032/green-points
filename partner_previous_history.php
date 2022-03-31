@@ -32,6 +32,8 @@ if(isset($_GET['P_accept']))
 
 ?>
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,11 +46,26 @@ if(isset($_GET['P_accept']))
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="partnercss.css?v=<?php echo time(); ?>">
     <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
-    <title>History</title>
+    <title>Your Tasks | Check States | Filter Tabs</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+     <!-- ================= used to take the tab at same place while storing it into the localstorage ================= -->
+    <!-- <script>
+    $(document).ready(function() {
+        $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if (activeTab) {
+            //  console.log($('#mytab a[href="' + activeTab + '"]').tab('show'));
+
+        }
+    });
+    </script> -->
 
 </head>
 
@@ -118,7 +135,7 @@ if(isset($_GET['P_accept']))
     <div class="ml-sm-1 mr-sm-1  mt-10 ml-32 mr-32 p-10 mb-32 "
         style="border-radius: 10px ; text-align: center; background-image: linear-gradient(to right, #5de035,#26ddb9); min-height: 700px; ">
 
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs" id="mytab">
             <!-- <li class="active"><a data-toggle="tab" href="#AllTasks">All Tasks</a></li> -->
             <li class="active"><a data-toggle="tab" href="#Pending">Pending Tasks</a></li>
             <li><a data-toggle="tab" href="#Accepted">Accepted Tasks</a></li>

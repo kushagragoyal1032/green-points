@@ -13,7 +13,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script>
-    <title>My, world!</title>
+    <title>GreenPoints | Home Users  Welcome</title>
 </head>
 
 <body>
@@ -58,6 +58,7 @@
                 <strong>Congrats! </strong>You have Logged in Successfully...
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
+                
             }
         }
         ?>
@@ -89,11 +90,9 @@
         <div class="container ">
             <div class="row">
                 <div class="col-md-6 d">
-                    <p class="body-title">The Best Ever Organization works for ENVIRONMENT</p>
+                    <p class="body-title">The Best Ever Organization working for ENVIRONMENT</p>
                     <hr class="w-30 ">
-                    <p class="mb-4 ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                        corrupti modi ratione aliquam quae vero fuga atque at laudantium nemo? Excepturi non quisquam
-                        praesentium aperiam corrupti laudantium quos totam perferendis.</p>
+                    <p class="mb-4 ">Let's come together and save our mother earth and our enviroment from Global warming by planting more trees and spreading more enviromental awareness in the society.</p>
                     <a href="greenform.php"><button type="button" class="btn btn-light green-btn">Make A Green
                             Point</button></a>
                     <a href="user_previous_history.php"><button type="button" class="btn btn-light green-btn">View My
@@ -119,26 +118,21 @@
             <h1 class="title">WHAT WE ACTUALLY DO</h1>
             <div class="row">
                 <div class="col-md-4 services">
-                    <img src="images/management.png" alt="">
+                    <img src="images/social-media.gif" alt="">
                     <h4>Management Infrasture</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, temporibus quis reborum fuga
-                        earumtibus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quoue cum modi in.
-                    </p>
+                    <p>A method of monitoring and maintaining critical Information Technology (IT) infrastructure to ensure the best use of resources, protect against data loss, and monitor key aspects of local and cloud-based service utilization.</p>
                 </div>
 
                 <div class="col-md-4 services">
                     <img src="images/climate.png" alt="">
-                    <h4>Help to Rebuilt Environment</h4>
-                    <p>Lortetur adipisicing elit. Alias, temporibus quis rerum culpa quaerat autem laborum fuga earum
-                        necessitatibus Lorem ipsum dolor sit amet consectetur adipisicing elit. iciis est.</p>
+                    <h4>Helps to Rebuilt Environment</h4>
+                    <p>Our goal is to connect the user to the NGO partner whose primary aim is afforestation by which we can help to rebuild our Enviroment, from something that will affect everyone eventually.</p>
                 </div>
 
                 <div class="col-md-4 services">
-                    <img src="images/management.png" alt="">
-                    <h4>Management Infrasture</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, temporibus quim fuga etqueum fuga
-                        delectus, saepe quos voluptas odit suscipit! Cumque, facere nihil?</p>
-                </div>
+                    <img src="images/social-care.gif" alt="">
+                    <h4>Takes care of World</h4>
+                    <p>Takes best terms of services and steps to solves environmental problems & should be in endeavor to save our home from losing its stature of a habitable one by collaborating at a platform togather. </div>
             </div>
             <button type="button" class="btn btn-success">All Services</button>
         </div>
@@ -155,11 +149,11 @@
                 <div class="col-md-6 ">
                     <p class="spec_title">Our Responsibilities</p>
                     <ul class="list-group list-group-flush ">
-                        <li>Cras justo odio</li>
-                        <li>Dapibus ac facilisis in</li>
-                        <li>Morbi leo risus</li>
-                        <li>Porta ac consectetur ac</li>
-                        <li>Vestibulum at eros</li>
+                        <li>Saving the Enviroment from its harmfull affects</li>
+                        <li>Countering the rising <i><b>Global warming</b></i> </li>
+                        <li>Help NGO to achieve there proactive or reactive Goals</li>
+                        <li>Focus on <i><b>Enviromental</b></i> redefining </li>
+                        <li>Maintain a good/responsive User-Ngo partner relationship</li>
                     </ul>
                 </div>
 
@@ -179,31 +173,32 @@
         <div class="container text-center">
             <h1 class="title">OUR EXECUTIVES</h1>
             <div class="row profile">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <img class="rounded-circle" src="images/profile.png" alt="Generic placeholder image" width="140"
                         height="140">
                     <h2>Sahil Goyal</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
-                        ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                        Praesent commodo cursus magna.</p>
+                    <p>A BCA student, Worked as Full-Stack Developer, Query Generator & Database Creation. Having Great Interest in Solving Challanging Problems on the go</p>
 
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <img class="rounded-circle" src="images/profile.png" alt="Generic placeholder image" width="140"
                         height="140">
                     <h2>Kushagra Goyal</h2>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                        Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
-                        tortor mauris condimentum nibh.</p>
+                    <p>A software associate, worked as a Full-Stack web developer, Handle Database Architecture, Security. Love to solve Challanging Coding Problems </p>
 
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <img class="rounded-circle" src="images/profile.png" alt="Generic placeholder image" width="140"
                         height="140">
                     <h2>Shah Nawaz</h2>
-                    <p>Donec sed odio dui. Crus ac cursuas justo odio, dapibus ac facilisis in, egestas eget quam. Vesus
-                        ac cursutibulum id dimeus ac cursuus ac cursuntuuus ac cursus ac cursum nibh, ut fermentum massa
-                        justo sit amet risus.</p>
+                    <p>A BCA enthiuast who works as Front-End Development, UI/UX Design Elements and Database Connection Strategy. keen Interst to work upon new Technology.</p>
+
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-3">
+                    <img class="rounded-circle" src="images/profile.png" alt="Generic placeholder image" width="140"
+                        height="140">
+                    <h2>Ritika Chawla</h2>
+                    <p>Another BCA enthiuast who works as Front-End Development with Elemntry part, UI/UX Design Elements & Modal Dev. Having Great Interest to learn new thinks</p>
 
                 </div><!-- /.col-lg-4 -->
             </div>
@@ -235,7 +230,7 @@
     $(function() {
         setTimeout(function() {
             $(".alert").fadeOut(1000);
-        }, 1200)
+        }, 2000)
     })
     </script>
 

@@ -15,39 +15,34 @@ ob_start();
     <!-- <script src="https://kit.fontawesome.com/742d0b1255.js" crossorigin="anonymous"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
-    <!-- <link rel="stylesheet" href="clientcss.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="user_details.css?v=<?php echo time(); ?>"> -->
     <link rel="stylesheet" href="full_style.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="userprofile.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="partnerprofile.css?v=<?php echo time(); ?>">
 
 
-    <title>Your Profile | Client Info</title>
+    <title>Your Profile | Partner Info</title>
 </head>
 
 
 <body>
+    
     <?php
     
     include 'partials/_db_connect.php';
-
-    include 'partials/_headerClient.php' ;
+    include 'partials/_headerPartner.php' ;
     
-    if (!isset($_SESSION['userisloggedin']) ) {
+    if (!isset($_SESSION['partnerisloggedin']) ) {
         $message = "Login First, to See Your Profile";
-        header("location:/green/index.php?loggedinsuccess=false&login_errormessage='$message'");
+        header("location:/green/partner.php?Ploggedinsuccess=false&Plogin_errormessage='$message'");
         ob_end_flush();
     }
     
     ?>
-
+ 
     <?php
-    $userid = $_SESSION['userid'];  
-
-    
+    $partnerid = $_SESSION['partnerid'];  
     ?>
 
-
-    <?php
+<?php
     if(isset($_POST['submitbtn']))
     {
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['submitbtn'] == 'imguploading')
@@ -67,7 +62,7 @@ ob_start();
             $image = $_FILES['pimage']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
             
-            $sql = "UPDATE `user` SET `User_image` = '$imgContent' WHERE `User_id` = '$userid'";
+            $sql = "UPDATE `partner` SET `partner_image` = '$imgContent' WHERE `partner_id` = '$partnerid'";
             
             $result = mysqli_query($con,$sql);
             
@@ -102,79 +97,76 @@ ob_start();
     }
     ?>
 
-    <!-- Modal -->
-    <div class="modal fade" id="profilePhotoModal" tabindex="-1" aria-labelledby="profilePhotoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="profilePhotoModalLabel">Select New Profile picture</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="" enctype="multipart/form-data">
-                        <div class="container text-center ">
-                            <label>
-                                <center><img src="images/profileimg.jpeg" width=200px height=100px style="align:center"
-                                        alt=""></center>
-                                <hr>
-                                <h4 class="text-primary"> + Add New Profile </h4>
-                                <input type="file" accept="image/* " class="form-control" name="pimage"
-                                    style="visibility: hidden;" required>
-                            </label>
-                        </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="submitbtn" value='imguploading'>Save
-                        changes</button>
-                </div>
-            </div>
-            </form>
+<!-- Modal -->
+<div class="modal fade" id="profilePhotoModal" tabindex="-1" aria-labelledby="profilePhotoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profilePhotoModalLabel">Select New Profile picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">        
+      <form method="POST" action="" enctype="multipart/form-data">
+        <div class="container text-center ">
+        <label>
+            <center><img src="images/profileimg.jpeg" width=200px height=100px style="align:center" alt=""></center><hr>
+            <h4 class="text-primary"> + Add New Profile </h4>
+            <input type="file" accept="image/* " class="form-control" name="pimage" style="visibility: hidden;" required>
+        </label>
         </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" name="submitbtn" value='imguploading'>Save changes</button>
+      </div>
     </div>
+    </form>
+  </div>
+</div>
 
     <?php
-    
 
-    $quer = "SELECT * FROM `user` where `User_id`= $userid";
-    $result = mysqli_query($con,$quer);
+ $quer = "SELECT * FROM `partner` where `Partner_id`= $partnerid";
+ $result = mysqli_query($con,$quer);
  
-    while($row = mysqli_fetch_assoc($result))
-    {
-        $user_name = $row['User_name'];
-        $user_email = $row['User_email'];
-        $user_phone = $row['User_mobile'];   
-        $imageresult = $row['User_image'];   
+     while($row = mysqli_fetch_assoc($result))
+     {
+        $partner_name = $row['Partner_name'];
+        $partner_email = $row['Partner_email'];
+        $partner_phone = $row['Partner_mobile'];
+        $partner_ngo= $row['Partner_ngo'];
+        $imageresult = $row['Partner_image'];   
 
-    }
+           
+     }
 
-    $all_task = "SELECT COUNT(*) as allcount FROM `greentask` WHERE Task_user_id=$userid";
+     $all_task = "SELECT COUNT(*) as allcount FROM `greentask` WHERE Task_partner_id=$partnerid";
     $result1=mysqli_query($con,$all_task);
     $datacount=mysqli_fetch_assoc($result1);
     $count_all =  $datacount['allcount']; 
     // echo $count_all;
 
-    $completed_task = "SELECT COUNT(*) as Completecount FROM `greentask` WHERE Task_user_id=$userid AND Task_status='Completed'";
+    $completed_task = "SELECT COUNT(*) as Completecount FROM `greentask` WHERE Task_partner_id=$partnerid AND Task_status='Completed'";
     $result2=mysqli_query($con,$completed_task);
     $datacount=mysqli_fetch_assoc($result2);
     $count_completed =  $datacount['Completecount'];
     // echo $count_completed;
 
-    $pending_task = "SELECT COUNT(*) as Pendingcount FROM `greentask` WHERE Task_user_id=$userid AND Task_status='Pending'";
+    $pending_task = "SELECT COUNT(*) as Pendingcount FROM `greentask` WHERE Task_partner_id=$partnerid AND Task_status='Pending'";
     $result2=mysqli_query($con,$pending_task);
     $datacount=mysqli_fetch_assoc($result2);
     $count_pending =  $datacount['Pendingcount'];
     // echo $count_pending;
     
-    $accepted_task = "SELECT COUNT(*) as Acceptedcount FROM `greentask` WHERE Task_user_id=$userid AND Task_status='Accepted'";
+    $accepted_task = "SELECT COUNT(*) as Acceptedcount FROM `greentask` WHERE Task_partner_id=$partnerid AND Task_status='Accepted'";
     $result3=mysqli_query($con,$accepted_task);
     $datacount=mysqli_fetch_assoc($result3);
     $count_accepted =  $datacount['Acceptedcount'];
     // echo $count_accepted;
 
-    $rejected_task = "SELECT COUNT(*) as Rejectedcount FROM `greentask` WHERE Task_user_id=$userid AND Task_status='Rejected'";
+    $rejected_task = "SELECT COUNT(*) as Rejectedcount FROM `greentask` WHERE Task_partner_id=$partnerid AND Task_status='Rejected'";
     $result4=mysqli_query($con,$rejected_task);
     $datacount=mysqli_fetch_assoc($result4);
     $count_rejected =  $datacount['Rejectedcount'];
@@ -190,39 +182,41 @@ ob_start();
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['changes'] == 'Save Changes')
     {
     $infoupdated=false;
-    $U_name = $_POST["inputusername"];
-    $U_email = $_POST["inputuseremail"];
-    $T_mob = $_POST["inputusermob"];
+    $P_name = $_POST["inputusername"];
+    $P_email = $_POST["inputuseremail"];
+    $P_mob = $_POST["inputusermob"];
 
-    $quer= "UPDATE `user` SET `User_name` = '$U_name', `User_email` = '$U_email', `User_mobile` = '$T_mob' WHERE `user`.`User_id` = $userid";
+    $quer= "UPDATE `partner` SET `Partner_name` = '$P_name', `Partner_email` = '$P_email', `Partner_mobile` = '$P_mob' WHERE `partner`.`Partner_id` = $partnerid";
     $result = mysqli_query($con,$quer);
     if ($result) 
-    {
+    {       
+            echo '<script>
+            
+            </script>';
+
             echo '<div class="alert alt2 alert-success alert-dismissible " role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
-            <p><i class="fa fa-check-circle"></i>Your Details has been changed successfully.</p>
+            <p><i class="fa fa-check-circle"></i>Your Details has been Updated successfully.</p>
             </div>';
-            $_SESSION['username'] = $U_name;
+            $_SESSION['partnername'] = $P_name;
 
-            $quer = "SELECT * FROM `user` where `User_id`= $userid";
+            $quer = "SELECT * FROM `partner` where `Partner_id`= $partnerid";
             $result = mysqli_query($con,$quer);
- 
-            while($row = mysqli_fetch_assoc($result))
-            {
-            $user_name = $row['User_name'];
-            $user_email = $row['User_email'];
-            $user_phone = $row['User_mobile'];   
-            // $imageresult = $row['User_image'];   
-        }
+            
+                while($row = mysqli_fetch_assoc($result))
+                {
+                   $partner_name = $row['Partner_name'];
+                   $partner_email = $row['Partner_email'];
+                   $partner_phone = $row['Partner_mobile'];
+                   $partner_ngo= $row['Partner_ngo'];   
+                }
     }
-}
+    }
     }
 ?>
 
-    <a href="index.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
-    <!-- images/profile1.png -->
-
+    <a href="partner.php" class="square_btn"> <button type="button"><b>Back</b></button></a>
 
     <div class="container my-1">
         <div class="main-body">
@@ -234,14 +228,15 @@ ob_start();
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                             <div class="contain">
-                                <img src="data:image/jpg;charset=utf8;base64,'.base64_encode($imageresult).'" alt="Admin" onclick="openmodal()" onerror="this.src=`images/profile1.png`;" class=" profile_image">
-                                <div class="middle">
-                                    <div class="text">Edit</div>
-                                </div>
+                            <img src="data:image/jpg;charset=utf8;base64,'.base64_encode($imageresult).'" alt="Admin" onclick="openmodal()" onerror="this.src=`images/profile1.png`;" class=" partner_profile_image" width="150">
+                            <div class="middle">
+                                <div class="text">Edit</div>
                             </div>
+                        </div>
                                 <div class="mt-3">
-                                    <h4>'.$user_name.'</h4>
-                                    <p class="text-secondary mb-1">User</p>
+                                    <h4>'.$partner_name.'</h4>
+                                    <p class="text-secondary mb-1"><b>Partner</b></p><hr>
+                                    <h5 class="text-secondary mb-2"><b>'.$partner_ngo.'</b></h5>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +247,7 @@ ob_start();
                   
                     
 					<div class="card mb-4">
-                        <form method="POST" action="/GREEN/user_profile.php">
+                        <form method="POST" action="/GREEN/partner_profile.php">
                     
 						<div class="card-body">
 							<div class="row mb-3">
@@ -260,7 +255,7 @@ ob_start();
 									<h6 class="mb-0">Full Name</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control" name="inputusername" value="'.$user_name.'" disabled required>
+									<input type="text" class="form-control" name="inputusername" value="'.$partner_name.'" disabled required>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -268,7 +263,7 @@ ob_start();
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-                                <input type="email" class="form-control" name="inputuseremail" value="'.$user_email.'" disabled=false required>
+									<input type="email" class="form-control" name="inputuseremail" value="'.$partner_email.'" disabled=false required> 
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -276,7 +271,7 @@ ob_start();
 									<h6 class="mb-0">Mobile No.</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-                                <input type="tel" class="form-control" name="inputusermob" value="'.$user_phone.'" disabled required maxlength=11 minlength="10">
+									<input type="tel" class="form-control" name="inputusermob" value="'.$partner_phone.'" disabled required maxlength=11 minlength="10">
 								</div>
 							</div>
 							<div class="row mt-3">
@@ -351,13 +346,14 @@ ob_start();
         $('.form-control').removeAttr("disabled");
         editbtn.style.display = "none";
         savebtn.style.visibility = "visible";
-
-
     });
 
-    function openmodal() {
+
+    function openmodal()
+    {
         $("#profilePhotoModal").modal('toggle');
     }
+
     </script>
 
 

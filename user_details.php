@@ -64,6 +64,8 @@
             {
                $user_name = $row['User_name'];
                $user_email = $row['User_email'];
+               $imageresult = $row['User_image'];   
+
                if ($encryption=='NonEncrypt') 
                 {
                $user_phone = $row['User_mobile'];   
@@ -160,7 +162,7 @@
                 <div class="col-lg-4 ">
                     <div class="card shadow-sm mt-4">
                         <div class="card-header bg-transparent text-center">
-                            <img src="images/profile1.png" alt="user image" class="profile_img">
+                        <img src="data:image/jpg;charset=utf8;base64,'.base64_encode($imageresult).'" onerror="this.src=`images/profile1.png`;"  alt="user image" class="profile_img">
                             <h3>'.$user_name.'</h3>
                         </div>
                         <div class="card-body">
