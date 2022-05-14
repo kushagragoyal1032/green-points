@@ -173,6 +173,12 @@ html,body
     transform: translateY(60px);
 }
 
+@media all and (max-width: 449px) and (min-width: 100px) {
+    .title::before {
+        transform: translateY(90px);
+    }
+  }
+
 .container .btn-success
 {
     border-radius: 20px;
