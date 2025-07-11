@@ -98,7 +98,7 @@ HTML
 CSS
 JavaScript
 Bootstrap
-Tailwind CSS
+Tailwind 
 
 Back-End:-
 ------------
